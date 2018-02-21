@@ -7,4 +7,5 @@
 Homestead.json
 Homestead.yaml
 .env
+.env_1.example
 /nbproject/private/
