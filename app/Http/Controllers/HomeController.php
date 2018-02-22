@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+     if (Auth::guest()) {
+        return view('welcome'); 
+     }  
         return view('home');
+     
     }
+    public function welcome()
+	{
+            return view('welcome');
+	}
 }
