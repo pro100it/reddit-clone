@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('include_home.sidebar')
+
 <div class="clearfix">
 </div>
 <div class="page-container">

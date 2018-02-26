@@ -21,7 +21,7 @@
     
     <div class="form-group">
         <label for="blockbsmt">Блок БСМТ:</label>
-        <input type="text" name="blockbsmt" class="form-control" value="{{ $transport->blockbsmt or old('blockbsmt') }}"/>
+        <input type="list" name="blockbsmt" class="form-control" value="{{ $transport->blockbsmt or old('blockbsmt') }}"/>
     </div>
     
     <div class="form-group">

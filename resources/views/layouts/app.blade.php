@@ -88,14 +88,15 @@
             </div>
         </nav>
 
-        <div class="container">
+                <div class="container">
             @include('layouts._errors')
         
             @include('layouts._messages')
 
             @yield('content')
         </div>
-    </div>
+                
+        </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
