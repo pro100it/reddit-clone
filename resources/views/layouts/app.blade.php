@@ -43,7 +43,17 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ route('create_post_path') }}">Добавить запись</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Блог <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                    <a href="{{ route('create_post_path') }}">Добавить запись в блог</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{ route('store_post_path') }}">Все записи</a>
+                                    </li>
+                                </ul>
+                        </li>    
                     </ul>  
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
@@ -51,6 +61,9 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li>
                                 <a href="{{ route('create_transport_path') }}">Добавить транспорт</a>
+                                </li>
+                                <li>
+                                <a href="{{ route('store_transport_path') }}">Список транспорта</a>
                                 </li>
                             </ul>    
                         </li>
@@ -91,7 +104,7 @@
                 <div class="container">
             @include('layouts._errors')
         
-            @include('layouts._messages')
+           @include('layouts._messages')
 
             @yield('content')
         </div>
