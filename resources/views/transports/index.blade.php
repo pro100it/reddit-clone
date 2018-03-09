@@ -6,13 +6,15 @@
             <div class="table-responsive">
                 <table class="table table-border">
                      <thead>
-                        <tr>
+                        <tr class="bg-primary">
                             <th>Модель</th>
                             <th>Государственный номер</th>
                             <th>Блок БСМТ</th>
+                            @if (Auth::guest())
+                            @else
                             <th>Действия</th>
                             <th></th>
-                            
+                            @endif
                         </tr>
                     </thead>
                     @foreach($transports as $transport)
@@ -34,13 +36,13 @@
                             </td>    
                             @endif
                         </tr>
-                       <tr>
-                            <td><p><!--Posted {{ $transport->created_at->diffForHumans() }} by <b>{{ $transport->user->name }}--></b></p></td>
+                       <!--<tr>
+                            <td><p>Posted {{ $transport->created_at->diffForHumans() }} by <b>{{ $transport->user->name }}</b></p></td>
                             <td></td>
                             <td></td>
                             <td class="col-xs-1"></td>
                             <td class="col-xs-1"></td>
-                        </tr>
+                        </tr>-->
                     </tbody> 
                     
                     @endforeach
@@ -48,7 +50,7 @@
                 
             </div>
         </div>
-        <hr>
+        
     
 
     {{ $transports->render() }}
