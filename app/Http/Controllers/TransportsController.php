@@ -24,7 +24,9 @@ class TransportsController extends Controller
     public function create()
     {
         $transport = new Transport;
+        $bsmts = Bsmt::all();
         return view('transports.create')->with(['transport' => $transport]);
+        
     }
 
     public function store(CreateTransportRequest $request)
