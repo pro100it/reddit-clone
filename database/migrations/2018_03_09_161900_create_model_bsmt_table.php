@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransportsTable extends Migration
+class CreateModelBsmtTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTransportsTable extends Migration
      */
     public function up()
     {
-     Schema::create('transports', function (Blueprint $table) {
+       Schema::create('modelbsmt', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('model',10);
-            $table->string('govnumber',10);
-            $table->string('blockbsmt_id',15);
-            $table->integer('user_id');
-
+            $table->string('model',25);
+            $table->string('modelnumber',10);
+            $table->string('modelimei',15);
             $table->timestamps(); 
         });
     }
@@ -31,6 +29,6 @@ class CreateTransportsTable extends Migration
      */
     public function down()
     {
-       Schema::dropIfExists('transports');
+      Schema::dropIfExists('modelbsmt');
     }
 }

@@ -10,7 +10,7 @@
             <br>
             <table class="table table-borderless">
                 <thead>
-                    <tr>
+                    <tr class="bg-primary">
                         <th>Модель</th>
                         <th>Государственный номер</th>
                         <th>Блок БСМТ</th>

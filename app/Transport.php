@@ -9,7 +9,10 @@ class Transport extends Model {
 
     protected $table = 'transports';
 
-    protected $casts = ['user_id' => 'integer'];
+    protected $casts = [
+          'user_id' => 'integer'
+        ];
+    
 
     protected $fillable = ['model', 'govnumber', 'blockbsmt'];
 
@@ -18,6 +21,10 @@ class Transport extends Model {
         return $this->belongsTo(User::class);
     }
 
+    public function bsmt() {
+        return $this->belongsTo(Bsmt::class);
+    }
+    
     public function wasCreatedBy($user)
     {
         if( is_null($user) ) {
