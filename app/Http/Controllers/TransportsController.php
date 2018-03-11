@@ -24,8 +24,8 @@ class TransportsController extends Controller
     public function create()
     {
         $transport = new Transport;
-        $bsmts = Bsmt::all();
-        return view('transports.create')->with(['transport' => $transport]);
+        $bsmts = Bsmt::with('Bsmt')->find($id);
+        return view('transports.create',['data'=>$bsmts])->with(['transport' => $transport]);
         
     }
 
