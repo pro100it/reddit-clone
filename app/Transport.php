@@ -22,7 +22,7 @@ class Transport extends Model {
     }
 
     public function bsmt() {
-        return $this->belongsTo(Bsmt::class);
+        return $this->hasMany(Bsmt::class);
     }
     
     public function wasCreatedBy($user)
