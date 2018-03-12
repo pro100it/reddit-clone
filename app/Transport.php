@@ -14,15 +14,15 @@ class Transport extends Model {
         ];
     
 
-    protected $fillable = ['model', 'govnumber', 'blockbsmt'];
+    protected $fillable = ['model', 'govnumber','blockbsmt_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function bsmt() {
-        return $this->hasMany(Bsmt::class);
+    public function bsmts() {
+        return $this->hasMany('App\Bsmt');
     }
     
     public function wasCreatedBy($user)

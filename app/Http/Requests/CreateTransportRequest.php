@@ -26,7 +26,7 @@ class CreateTransportRequest extends FormRequest
         return [
             'model' =>     'required',
             'govnumber' => 'required',
-            'blockbsmt' => 'required'
+            'blockbsmt_id' => 'required'
         ];
     }
 }

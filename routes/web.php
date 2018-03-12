@@ -13,7 +13,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::name('delete_post_path')->delete('/posts/{post}', 'PostsController@delete');
   
     //Transport
-    Route::name('create_transport_path')->get('/transports/create', 'TransportsController@create');
+    Route::name('create_transport_path')->get('/transports/create', 'TransportsController@create'); 
     Route::name('store_transport_path')->post('/transports', 'TransportsController@store');
     Route::name('edit_transport_path')->get('/transports/{transport}/edit', 'TransportsController@edit');
     Route::name('update_transport_path')->put('/transports/{transport}', 'TransportsController@update');

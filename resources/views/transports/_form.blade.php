@@ -21,7 +21,7 @@
     
     <div class="form-group">
         <label for="blockbsmt">Блок БСМТ:</label>
-        <select name="blockbsmt" class="form-control" value="{{ $bsmts->name }}"/>
+        <select name="blockbsmt" class="form-control" value="{{ $bsmt->name }}"/>
     </div>
     
     <div class="form-group">
