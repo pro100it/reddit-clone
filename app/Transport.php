@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Bsmt;
 use Illuminate\Database\Eloquent\Model;
 
 class Transport extends Model {
@@ -12,7 +13,7 @@ class Transport extends Model {
     protected $casts = [
           'user_id' => 'integer'
         ];
-    
+
 
     protected $fillable = ['model', 'govnumber','blockbsmt_id'];
 
@@ -22,9 +23,9 @@ class Transport extends Model {
     }
 
     public function bsmts() {
-        return $this->hasMany('App\Bsmt');
+        return $this->hasMany();
     }
-    
+
     public function wasCreatedBy($user)
     {
         if( is_null($user) ) {
