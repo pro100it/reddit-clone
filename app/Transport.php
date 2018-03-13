@@ -11,11 +11,12 @@ class Transport extends Model {
     protected $table = 'transports';
 
     protected $casts = [
-          'user_id' => 'integer'
+          'user_id' => 'integer',
+          'bsmt_id' => 'integer'  
         ];
 
 
-    protected $fillable = ['model', 'govnumber','blockbsmt_id'];
+    protected $fillable = ['model', 'govnumber'];
 
     public function user()
     {
@@ -23,7 +24,7 @@ class Transport extends Model {
     }
 
     public function bsmts() {
-        return $this->hasMany();
+        return $this->hasMany(Transport::class);
     }
 
     public function wasCreatedBy($user)

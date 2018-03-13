@@ -27,4 +27,6 @@ Route::name('posts_path')->get('/posts', 'PostsController@index');
 Route::name('post_path')->get('/posts/{post}', 'PostsController@show');
 Route::name('transports_path')->get('/transports', 'TransportsController@index');
 Route::name('transport_path')->get('/transports/{transport}', 'TransportsController@show');
+Route::name('transport_results')->get('/transports/results','TransportController@result');
+Route::name('bsmt_path')->get('/bsmts','BsmtController@index');
 

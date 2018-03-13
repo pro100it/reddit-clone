@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transport;
+use App\Bsmt;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransportRequest;
 use App\Http\Requests\UpdateTransportRequest;
@@ -12,7 +13,6 @@ class TransportsController extends Controller
     public function index()
     {
         $transports = Transport::with('user')->orderBy('id', 'desc')->paginate(10);
-
         return view('transports.index')->with(['transports' => $transports]);
     }
 
@@ -24,10 +24,17 @@ class TransportsController extends Controller
     public function create()
     {
         $transport = new Transport;
-        $bsmt = Bsmt::with('Bsmt')->find($id);
-        return view('transports.create',['data'=>$bsmt])->with(['bsmt' => $bsmt]);
         return view('transports.create')->with(['transport' => $transport]);
         
+    }
+    
+    public function results(Transport $transport )
+    {
+       $bsmts = Bsmt::with('transport')->get();
+       $transports = Transport::get();	
+        dd(array('bsmts' => $bsmts, 'transports' => $transports));
+       
+             
     }
 
     public function store(CreateTransportRequest $request)
