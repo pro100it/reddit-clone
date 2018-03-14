@@ -10,14 +10,15 @@ class BsmtController extends Controller
 {
     public function index()
     {
-       $bsmts = Bsmt::with('transports')->get();
-       $transports = Transport::all();	
-        dd($bsmts);
+       $bsmts = Bsmt::all(); //with('bsmts')->get();
+       //$transports = Transport::all();	
+       // dd($bsmts);
+       return view('bsmt.index',['bsmts'=>$bsmts]);
     }
     
     public function show(Transport $transport)
     {
-        return view('bsmt.show')->with(['bsmt' => $bsmt]);
+        return view('bsmt.show')->with(['bsmts' => $bsmt]);
     }
     
     public function create()

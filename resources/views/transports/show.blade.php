@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{ $transport->model }}</td>
                         <td>{{ $transport->govnumber }}</td>    
-                        <td>{{ $transport->blockbsmt }}</td>
+                        <td>{{ $transport->bsmt_id }}</td>
                     </tr>
                 </tbody>
             </table>

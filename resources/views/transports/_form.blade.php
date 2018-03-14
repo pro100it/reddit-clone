@@ -20,8 +20,12 @@
     </div>
     
     <div class="form-group">
-        <label for="blockbsmt">Блок БСМТ:</label>
-        <select name="blockbsmt" class="form-control" value="{{ $bsmt->name }}"/>
+        <label for="bsmt_id">Блок БСМТ:</label>
+        <select class="form-control input-sm" name="bsmt_id" id="bsmt_id">
+        @foreach($bsmt as $d)
+            <option value="{{$d->id}}">{{$d->model}} {{$d->modelnumber}}</option>
+        @endforeach
+    </select>
     </div>
     
     <div class="form-group">

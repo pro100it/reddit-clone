@@ -16,7 +16,7 @@ class Transport extends Model {
         ];
 
 
-    protected $fillable = ['model', 'govnumber'];
+    protected $fillable = ['model', 'govnumber','bsmt_id'];
 
     public function user()
     {
@@ -24,7 +24,7 @@ class Transport extends Model {
     }
 
     public function bsmts() {
-        return $this->hasMany(Transport::class);
+        return $this->belongsTo(Bsmt::class);
     }
 
     public function wasCreatedBy($user)

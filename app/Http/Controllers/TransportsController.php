@@ -13,6 +13,7 @@ class TransportsController extends Controller
     public function index()
     {
         $transports = Transport::with('user')->orderBy('id', 'desc')->paginate(10);
+        
         return view('transports.index')->with(['transports' => $transports]);
     }
 
@@ -24,24 +25,16 @@ class TransportsController extends Controller
     public function create()
     {
         $transport = new Transport;
-        return view('transports.create')->with(['transport' => $transport]);
+        $bsmts = Bsmt::all(); 
+        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts]);
         
     }
-    
-    public function results(Transport $transport )
-    {
-       $bsmts = Bsmt::with('transport')->get();
-       $transports = Transport::get();	
-        dd(array('bsmts' => $bsmts, 'transports' => $transports));
-       
-             
-    }
-
+   
     public function store(CreateTransportRequest $request)
     {
         $transport = new Transport;
         $transport->fill(
-            $request->only('model', 'govnumber', 'blockbsmt')
+            $request->only('model', 'govnumber', 'bsmt_id')
         );
         $transport->user_id = $request->user()->id;
         $transport->save();
@@ -63,7 +56,7 @@ class TransportsController extends Controller
     public function update(Transport $transport, UpdateTransportRequest $request)
     {
         $transport->update(
-            $request->only('model', 'govnumber', 'blockbsmt')
+            $request->only('model', 'govnumber', 'bsmt_id' )
         );
 
         session()->flash('message', 'Транспорт обновлен!!!');

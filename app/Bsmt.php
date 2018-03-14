@@ -22,6 +22,6 @@ class Bsmt extends Model
     
     public function transports()
     {
-        return $this->belongsTo(Transport::class);
+        return $this->hasMany(Transport::class);
     }
 }

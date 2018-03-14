@@ -22,7 +22,7 @@
                         <tr>
                             <td><a href="{{ route('transport_path', ['transport' => $transport->id]) }}">{{ $transport->model }}</a></td>    
                             <td>{{ $transport->govnumber }}</td>
-                            <td>{{ $transport->blockbsmt }}</td>
+                            <td>{{ $transport->bsmts->id }}</td>
                             @if($transport->wasCreatedBy( Auth::user() ))        
                             <td class="col-xs-1">
                             <a href="{{ route('edit_transport_path', ['transport' => $transport->id]) }}" class="btn btn-info">Изменить</a>
@@ -36,13 +36,7 @@
                             </td>    
                             @endif
                         </tr>
-                       <!--<tr>
-                            <td><p>Posted {{ $transport->created_at->diffForHumans() }} by <b>{{ $transport->user->name }}</b></p></td>
-                            <td></td>
-                            <td></td>
-                            <td class="col-xs-1"></td>
-                            <td class="col-xs-1"></td>
-                        </tr>-->
+                       
                     </tbody> 
                     
                     @endforeach
