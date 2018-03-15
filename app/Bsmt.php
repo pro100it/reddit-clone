@@ -15,13 +15,5 @@ class Bsmt extends Model
     
     protected $fillable = ['model', 'modelnumber','modelimei'];
     
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-    
-    public function transports()
-    {
-        return $this->hasMany(Transport::class);
-    }
+        
 }

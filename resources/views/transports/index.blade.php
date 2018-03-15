@@ -22,7 +22,7 @@
                         <tr>
                             <td><a href="{{ route('transport_path', ['transport' => $transport->id]) }}">{{ $transport->model }}</a></td>    
                             <td>{{ $transport->govnumber }}</td>
-                            <td>{{ $transport->bsmts->id }}</td>
+                            <td>{{ $transport->bsmts->modelnumber }}</td>
                             @if($transport->wasCreatedBy( Auth::user() ))        
                             <td class="col-xs-1">
                             <a href="{{ route('edit_transport_path', ['transport' => $transport->id]) }}" class="btn btn-info">Изменить</a>
@@ -45,7 +45,4 @@
             </div>
         </div>
         
-    
-
-    {{ $transports->render() }}
 @endsection

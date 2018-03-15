@@ -3,6 +3,10 @@
 namespace App;
 
 use App\Post;
+use App\Bsmt;
+use App\Transport;
+
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -38,8 +42,4 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     
-    public function bsmts()
-    {
-        return $this->hasMany(Bsmt::class);
-    }
 }

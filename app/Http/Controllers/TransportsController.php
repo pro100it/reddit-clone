@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Transport;
 use App\Bsmt;
+use App\Transport;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransportRequest;
 use App\Http\Requests\UpdateTransportRequest;
@@ -13,13 +13,12 @@ class TransportsController extends Controller
     public function index()
     {
         $transports = Transport::with('user')->orderBy('id', 'desc')->paginate(10);
-        
         return view('transports.index')->with(['transports' => $transports]);
     }
 
     public function show(Transport $transport)
     {
-        return view('transports.show')->with(['transport' => $transport]);
+        return view('transports.show',compact('transport'));
     }
 
     public function create()
@@ -49,8 +48,8 @@ class TransportsController extends Controller
         if($transport->user_id != \Auth::user()->id) {
             return redirect()->route('transports_path');
         }
-        
-        return view('transports.edit')->with(['transport' => $transport]);
+        $bsmts = Bsmt::all();
+        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts]);
     }
 
     public function update(Transport $transport, UpdateTransportRequest $request)
@@ -67,13 +66,13 @@ class TransportsController extends Controller
     public function delete(Transport $transport)
     {
         if($transport->user_id != \Auth::user()->id) {
-            return redirect()->route('transports_path');
+            return redirect()->route('transport_path');
         }
 
         $transport->delete();
 
         session()->flash('message', 'Транспорт удален!!!');
 
-        return redirect()->route('transports_path');
+        return redirect()->route('transport_path');
     }
 }

@@ -18,8 +18,8 @@ class CreateModelBsmtTable extends Migration
             $table->string('model',25);
             $table->string('modelnumber',10);
             $table->string('modelimei',15);
-            $table->integer('user_id');
             $table->timestamps(); 
+            
         });
     }
 

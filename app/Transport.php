@@ -1,9 +1,6 @@
 <?php
 
 namespace App;
-
-use App\User;
-use App\Bsmt;
 use Illuminate\Database\Eloquent\Model;
 
 class Transport extends Model {
@@ -15,16 +12,15 @@ class Transport extends Model {
           'bsmt_id' => 'integer'  
         ];
 
-
     protected $fillable = ['model', 'govnumber','bsmt_id'];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User','user_id');
     }
 
     public function bsmts() {
-        return $this->belongsTo(Bsmt::class);
+        return $this->belongsTo('App\Bsmt','bsmt_id');
     }
 
     public function wasCreatedBy($user)

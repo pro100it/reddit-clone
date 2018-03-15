@@ -15,12 +15,19 @@ class CreateTransportsTable extends Migration
     {
      Schema::create('transports', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->string('model',10);
             $table->string('govnumber',10);
-            $table->string('blockbsmt_id',15);
-            $table->integer('user_id');
-
+            $table->integer('bsmt_id')->unsigned();
             $table->timestamps(); 
+            
+            $table->foreign('bsmt_id')
+                    ->references('id')
+                    ->on('modelbsmt')
+                    ->onDelete('cascade');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users');
         });
     }
 
