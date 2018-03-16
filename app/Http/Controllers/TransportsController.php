@@ -66,13 +66,13 @@ class TransportsController extends Controller
     public function delete(Transport $transport)
     {
         if($transport->user_id != \Auth::user()->id) {
-            return redirect()->route('transport_path');
+            return redirect()->route('transports_path');
         }
 
         $transport->delete();
 
         session()->flash('message', 'Транспорт удален!!!');
 
-        return redirect()->route('transport_path');
+        return redirect()->route('transports_path');
     }
 }

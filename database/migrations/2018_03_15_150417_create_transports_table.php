@@ -18,13 +18,13 @@ class CreateTransportsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('model',10);
             $table->string('govnumber',10);
-            $table->integer('bsmt_id')->unsigned();
+            $table->integer('bsmt_id')->unsigned()->nullable();
             $table->timestamps(); 
             
             $table->foreign('bsmt_id')
                     ->references('id')
                     ->on('modelbsmt')
-                    ->onDelete('cascade');
+                    ->onDelete('set null');
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users');

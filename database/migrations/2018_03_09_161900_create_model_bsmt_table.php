@@ -15,11 +15,15 @@ class CreateModelBsmtTable extends Migration
     {
        Schema::create('modelbsmt', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('model',25);
+            $table->integer('vendor_id')->unsigned()->nullable();
             $table->string('modelnumber',10);
             $table->string('modelimei',15);
             $table->timestamps(); 
             
+            $table->foreign('vendor_id')
+                    ->references('id')
+                    ->on('vendorbsmt')
+                    ->onDelete('set null');
         });
     }
 

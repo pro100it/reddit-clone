@@ -68,7 +68,32 @@
                             </ul>    
                         </li>
                     </ul>
-                    
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Производители БСМТ <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                <a href="{{ route('create_vbsmt_path') }}">Добавить производителя</a>
+                                </li>
+                                <li>
+                                <a href="{{ route('store_vbsmt_path') }}">Список производителей</a>
+                                </li>
+                            </ul>    
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Блоки БСМТ <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                    <a href="{{ route('create_bsmt_path') }}">Добавить блок БСМТ</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{ route('store_bsmt_path') }}">Список блоков БСМТ</a>
+                                    </li>
+                                </ul>
+                        </li>    
+                    </ul>                     
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

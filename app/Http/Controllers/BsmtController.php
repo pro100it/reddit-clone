@@ -28,20 +28,17 @@ class BsmtController extends Controller
         
     }
     
-    public function store(Request $request)
+    public function store(CreateBsmtRequest $request)
     {
         $bsmt = new Bsmt;
-        $bsmt->update(
-            $request->validate([
-                'modelnumber' => 'required|string|max:15|unique:modelbsmt',
-                'modelimei'=> 'required|string|max:15',
-            ]));
-        
+        $bsmt->fill(
+            $request->only('model', 'modelnumber', 'modelimei')
+        );
         $bsmt->save();
 
         session()->flash('message', 'Блок БСМТ добавлен!!!');
 
-        return redirect()->route('bsmt_path');
+        return redirect()->route('bsmts_path');
     }
 
     public function edit(Bsmt $bsmt)
@@ -49,14 +46,11 @@ class BsmtController extends Controller
         return view('bsmts.edit')->with(['bsmt'=>$bsmt]);
     }
 
-    public function update(Bsmt $bsmt, Request $request)
+    public function update(Bsmt $bsmt, UpdateBsmtRequest $request)
     {
         $bsmt->update(
-            $request->validate([
-                'modelnumber' => 'required|string|max:15|unique:modelbsmt',
-                'modelimei'=> 'required|string|max:15',
-            ]));
-        
+            $request->only('model', 'modelnumber', 'modelimei' )
+        );
 
         session()->flash('message', 'Блок БСМТ обновлен!!!');
 
@@ -65,10 +59,15 @@ class BsmtController extends Controller
 
     public function delete(Bsmt $bsmt)
     {
-       $bsmt->delete();
+        
+        if(\Auth::user()) {
+            return redirect()->route('bsmts_path');
+        }
+        
+        $bsmt->delete();
 
         session()->flash('message', 'Блок БСМТ удален!!!');
 
-        return redirect()->route('bsmt_path');
+        return redirect()->route('bsmts_path');
     }
 }
