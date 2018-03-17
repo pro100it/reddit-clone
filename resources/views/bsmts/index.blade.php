@@ -21,7 +21,7 @@
      @foreach($bsmts as $bsmt)
         <tbody>
              <tr>
-                <td><a href="{{ route('bsmt_path', ['bsmt' => $bsmt->id]) }}">{{ $bsmt->model }}</a></td>    
+                <td><a href="{{ route('bsmt_path', ['bsmt' => $bsmt->id]) }}">{{ $bsmt->vbsmts->vendorname }}</a></td>    
                 <td>{{ $bsmt->modelnumber }}</td>
                 <td>{{ $bsmt->modelimei }}</td>
                 @if (Auth::guest())

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\VendorBsmt;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateVendorBsmtRequest;
+use App\Http\Requests\UpdateVendorBsmtRequest;
 
 class VendorBsmtController extends Controller
 {
@@ -20,7 +22,7 @@ class VendorBsmtController extends Controller
     public function create()
     {
         
-       $bsmt = new VendorBsmt; 
+       $vbsmt = new VendorBsmt; 
         return view('bsmtvendors.create',compact('vbsmt'));
         
     }
@@ -43,7 +45,7 @@ class VendorBsmtController extends Controller
         return view('bsmtvendors.edit')->with(['vbsmt'=>$vbsmt]);
     }
 
-    public function update(VendorBsmt $vbsmt, \App\Http\Requests\UpdateVendorBsmtRequest $request)
+    public function update(VendorBsmt $vbsmt, UpdateVendorBsmtRequest $request)
     {
         $vbsmt->update(
             $request->only('vendorname' )
@@ -57,11 +59,11 @@ class VendorBsmtController extends Controller
     public function delete(VendorBsmt $vbsmt)
     {
         
-        if(\Auth::user()) {
-            return redirect()->route('vbsmts_path');
-        }
+        //if(\Auth::user()) {
+        //    return redirect()->route('vbsmts_path');
+        //}
         
-        $bsmt->delete();
+        $vbsmt->delete();
 
         session()->flash('message', 'Блок БСМТ удален!!!');
 

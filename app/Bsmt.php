@@ -15,7 +15,7 @@ class Bsmt extends Model
         
     protected $fillable = ['vendor_id', 'modelnumber','modelimei'];
     
-    public function bsmts() {
+    public function vbsmts() {
         return $this->belongsTo('App\VendorBsmt','vendor_id');
     }    
 }

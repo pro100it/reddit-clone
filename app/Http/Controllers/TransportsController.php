@@ -23,7 +23,7 @@ class TransportsController extends Controller
 
     public function create()
     {
-        $transport = new Transport;
+        $transport = New Transport;
         $bsmts = Bsmt::all(); 
         return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts]);
         

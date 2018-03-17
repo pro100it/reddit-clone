@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $bsmt->model }}</td>
+                        <td>{{ $bsmt->vbsmts->vendorname }}</td>
                         <td>{{ $bsmt->modelnumber }}</td>    
                         <td>{{ $bsmt->modelimei }}</td>
                     </tr>

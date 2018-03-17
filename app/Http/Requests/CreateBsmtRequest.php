@@ -28,17 +28,16 @@ class CreateBsmtRequest extends FormRequest
         
         case 'PUT':
             $rules = [
-                'model' =>       'required',
-                'modelnumber' => 'required|unique:modelbsmt',
-                'modelimei' =>   'required|max:15'
+                'modelnumber' => 'required|unique:modelbsmt'
+             
             ];
         break;
 
         default:
             $rules = [
-                'model' =>       'required',
-                'modelnumber' => 'required|unique:modelbsmt',
-                'modelimei' =>   'required|max:15'
+                
+                'modelnumber' => 'required|unique:modelbsmt'
+                
             ];
         break;
         }    

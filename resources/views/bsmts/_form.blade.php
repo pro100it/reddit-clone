@@ -9,8 +9,12 @@
 
     <!-- Title Field -->
     <div class="form-group">
-        <label for="model">Модель БСМТ:</label>
-        <input type="text" name="model" class="form-control" value="{{ $bsmt->model or old('model') }}"/>
+        <label for="model">Производитель БСМТ:</label>
+        <select class="form-control input-sm" name="vendor_id" id="vendor_id">
+        @foreach($vbsmt as $d)
+            <option value="{{$d->id}}">{{$d->vendorname}}</option>
+        @endforeach
+        </select>
     </div>
 
     <!-- Description Input -->
