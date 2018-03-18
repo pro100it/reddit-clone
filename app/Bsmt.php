@@ -18,4 +18,8 @@ class Bsmt extends Model
     public function vbsmts() {
         return $this->belongsTo('App\VendorBsmt','vendor_id');
     }    
+
+    public function bsmtstatus() {
+    	return $this->belongsTo('App\BsmtStatus','statusbsmt_id')
+    }
 }
