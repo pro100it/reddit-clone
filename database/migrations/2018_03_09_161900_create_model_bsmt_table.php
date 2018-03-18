@@ -18,11 +18,17 @@ class CreateModelBsmtTable extends Migration
             $table->integer('vendor_id')->unsigned()->nullable();
             $table->string('modelnumber',10);
             $table->string('modelimei',15);
+            $table->integer('statusbsmt_id')->unsigned()->nullable(); 
             $table->timestamps(); 
             
             $table->foreign('vendor_id')
                     ->references('id')
                     ->on('vendorbsmt')
+                    ->onDelete('set null');
+            
+            $table->foreign('statusbsmt_id')
+                    ->references('id')
+                    ->on('statusbsmt')
                     ->onDelete('set null');
         });
     }
