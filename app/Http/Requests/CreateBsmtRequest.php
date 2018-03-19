@@ -23,24 +23,12 @@ class CreateBsmtRequest extends FormRequest
      */
     public function rules()
     {
-    switch ($this->method()) 
-        {
+               
+        return [
+            'modelnumber' => 'required|unique:modelbsmt',
+            'modelimei' => 'required'
+            
+        ];
         
-        case 'PUT':
-            $rules = [
-                'modelnumber' => 'required|unique:modelbsmt'
-             
-            ];
-        break;
-
-        default:
-            $rules = [
-                
-                'modelnumber' => 'required|unique:modelbsmt'
-                
-            ];
-        break;
-        }    
-        return $rules;
     }
 }

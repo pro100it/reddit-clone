@@ -28,7 +28,7 @@ class CreateModelBsmtTable extends Migration
             
             $table->foreign('statusbsmt_id')
                     ->references('id')
-                    ->on('statusbsmt')
+                    ->on('bsmtstatus')
                     ->onDelete('set null');
         });
     }

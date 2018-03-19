@@ -14,18 +14,21 @@
                         <th>Модель</th>
                         <th>Номер БСМТ</th>
                         <th>IMEI БСМТ</th>
+                        <th>Статус</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{ $bsmt->vbsmts->vendorname }}</td>
+                        <td>{{ $bsmt->vbsmts ? $bsmt->vbsmts->vendorname:'Нет данных' }}</td>
                         <td>{{ $bsmt->modelnumber }}</td>    
                         <td>{{ $bsmt->modelimei }}</td>
+                        <td>{{ $bsmt->sbsmts ? $bsmt->sbsmts->status:'Данных нет' }}</td>
                     </tr>
                 </tbody>
             </table>
-        </tr>   
+        </tr>  
         </div>
     </div>
     <hr>
+    <a class="btn btn-primary" href="{{ route('store_bsmt_path') }}">Назад в список</a>
 @endsection

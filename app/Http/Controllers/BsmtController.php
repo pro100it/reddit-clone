@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bsmt;
 use App\VendorBsmt;
+use App\BsmtStatus;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBsmtRequest;
 use App\Http\Requests\UpdateBsmtRequest;
@@ -26,7 +27,12 @@ class BsmtController extends Controller
         
        $bsmt = new Bsmt; 
        $vbsmts = VendorBsmt::all(); 
-        return view('bsmts.create')->with(['bsmt' => $bsmt,'vbsmt'=>$vbsmts]);
+       $sbsmts = BsmtStatus::all();
+       return view('bsmts.create')
+               ->with(['bsmt' => $bsmt,
+                       'vbsmt' =>$vbsmts,
+                       'sbsmt' =>$sbsmts]
+                     );
         
     }
     
@@ -34,7 +40,7 @@ class BsmtController extends Controller
     {
         $bsmt = new Bsmt;
         $bsmt->fill(
-            $request->only('vendor_id', 'modelnumber', 'modelimei')
+            $request->only('vendor_id', 'modelnumber', 'modelimei','statusbsmt_id')
         );
         $bsmt->save();
 
@@ -46,14 +52,16 @@ class BsmtController extends Controller
     public function edit(Bsmt $bsmt)
     {
         $vbsmts = VendorBsmt::all();
-        return view('bsmts.edit')->with(['bsmt'=>$bsmt,'vbsmt'=>$vbsmts]);
+        $sbsmts = BsmtStatus::all();
+        
+        return view('bsmts.edit')->with(['bsmt'=>$bsmt,'vbsmt'=>$vbsmts,'sbsmt'=>$sbsmts]);
         
     }
 
     public function update(Bsmt $bsmt, UpdateBsmtRequest $request)
     {
         $bsmt->update(
-            $request->only('vendor_id', 'modelnumber', 'modelimei' )
+            $request->only('vendor_id', 'modelnumber', 'modelimei','statusbsmt_id' )
         );
 
         session()->flash('message', 'Блок БСМТ обновлен!!!');

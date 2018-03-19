@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusbsmtTable extends Migration
+class CreateBsmtStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStatusbsmtTable extends Migration
      */
     public function up()
     {
-      Schema::create('statusbsmt', function (Blueprint $table) 
+      Schema::create('bsmtstatus', function (Blueprint $table) 
         {
             $table->increments('id');
             $table->string('status',50);
@@ -27,6 +27,6 @@ class CreateStatusbsmtTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statusbsmt');
+        Schema::dropIfExists('bsmtstatus');
     }
 }

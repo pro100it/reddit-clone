@@ -29,6 +29,16 @@
     </div>
     
     <div class="form-group">
-        <button type="submit" class='btn btn-primary'>Сохранить запись</button>
+        <label for="status">Статус БСМТ:</label>
+        <select class="form-control input-sm" name="statusbsmt_id" id="statusbsmt_id">
+        @foreach($sbsmt as $s)
+            <option value="{{$s->id}}">{{$s->status}}</option>
+        @endforeach
+        </select>
     </div>
+    <div class="form-group">
+        <button type="submit" class='btn btn-primary'>Сохранить запись</button>
+        <a class="btn btn-primary" href="{{ route('store_bsmt_path') }}">Не сохранять</a>
+    </div>
+    
 </form>

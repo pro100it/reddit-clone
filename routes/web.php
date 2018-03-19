@@ -33,6 +33,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::name('update_vbsmt_path')->put('/bsmtvendors/{vbsmt}', 'VendorBsmtController@update');
     Route::name('delete_vbsmt_path')->delete('/bsmtvendors/{vbsmt}', 'VendorBsmtController@delete');
     
+    //STATUS-BSMT
+    Route::name('create_sbsmt_path')->get('/bsmtstatus/create', 'BstmStatusController@create'); 
+    Route::name('store_sbsmt_path')->post('/bsmtstatus', 'BstmStatusController@store');
+    Route::name('edit_sbsmt_path')->get('/bsmtstatus/{sbsmt}/edit', 'BstmStatusController@edit');
+    Route::name('update_sbsmt_path')->put('/bsmtstatus/{sbsmt}', 'BstmStatusController@update');
+    Route::name('delete_sbsmt_path')->delete('/bsmtstatus/{sbsmt}', 'BstmStatusController@delete');
+    
 });
 
 Route::get('/', 'HomeController@index');
@@ -49,8 +56,10 @@ Route::name('transport_path')->get('/transports/{transport}', 'TransportsControl
 Route::name('bsmts_path')->get('/bsmts','BsmtController@index');
 Route::name('bsmt_path')->get('/bsmts/{bsmt}','BsmtController@show');
 
-//VendorBSMT not auth
+//Vendor BSMT not auth
 Route::name('vbsmts_path')->get('/bsmtvendors','VendorBsmtController@index');
 Route::name('vbsmt_path')->get('/bsmtvendors/{vbsmt}','VendorBsmtController@show');
 
-
+//Status BSMT not auth
+Route::name('sbsmts_path')->get('/bsmtstatus','BstmStatusController@index');
+Route::name('sbsmt_path')->get('/bsmtstatus/{sbsmt}','BstmStatusController@show');
