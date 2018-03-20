@@ -14,7 +14,7 @@
                 <thead>
                     <tr class="bg-primary">
                         <th>Модель</th>
-                        <th>Государственный номер</th>
+                        <th>Гос.номер</th>
                         <th>Блок БСМТ</th>
                         <th>Заказчик</th>
                         @auth

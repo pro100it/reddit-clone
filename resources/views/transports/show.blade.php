@@ -7,7 +7,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                    <strong>Информация о блоке ТС</strong>
+                    <strong>Информация о транспорте</strong>
                 </div>
                 <div class="well">
                     <strong>Модель: </strong>{{ $transport->model }} <br>
@@ -20,7 +20,7 @@
               
             </div>
         <center>
-            <a class="btn btn-primary" href="{{ route('store_transport_path') }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Назад в список</a>
+            <a class="btn btn-primary" href="{{ route('store_transport_path') }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Назад</a>
         </center>    
         </div>
     </div>
