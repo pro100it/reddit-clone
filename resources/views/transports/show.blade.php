@@ -1,33 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<hr>
-
-     <div class="row">
-        <div class="table-responsive">
-            <h2><b>Информация о транспортном средстве</b></h2>
-            <br>
-            <br>
-            <table class="table table-borderless">
-                <thead>
-                    <tr class="bg-primary">
-                        <th>Модель</th>
-                        <th>Государственный номер</th>
-                        <th>Блок БСМТ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ $transport->model }}</td>
-                        <td>{{ $transport->govnumber }}</td>    
-                        <td>{{ $transport->bsmts->modelnumber }}</td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                    <strong>Информация о блоке ТС</strong>
+                </div>
+                <div class="well">
+                    <strong>Модель: </strong>{{ $transport->model }} <br>
+                    <strong>Государственный номер: </strong>{{ $transport->govnumber }}<br>
+                    <strong>Блок БСМТ: </strong>{{$transport->bsmts ? $transport->bsmts->modelnumber:'Данных нет' }}<br>
+                    <strong>Заказчик: </strong>{{ $transport->customers ? $transport->customers->customer:'Данных нет' }} 
+                    <br><br><p><b>Добавлено {{ $transport->created_at->diffForHumans() }}</b></p>
+                </div>
             
-            <p><b>Добавлено {{ $transport->created_at->diffForHumans() }}</b></p>
-        </tr>   
+              
+            </div>
+        <center>
+            <a class="btn btn-primary" href="{{ route('store_transport_path') }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Назад в список</a>
+        </center>    
         </div>
     </div>
-    <hr>
+</div>
 @endsection

@@ -2,8 +2,12 @@
 
 @section('content')
 
-<div class="row">
-            <div class="table-responsive">
+<div class="col-md-8 col-md-offset-2">
+  <div class="row">
+    <div style="text-align: right">  
+        <a class="btn btn-default btn-sm" href="{{ route('create_bsmt_path') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true">Добавить</span></a>
+    </div>
+    <div class="table-responsive">
                 <table class="table table-border">
                      <thead>
                         <tr class="bg-primary">
@@ -14,11 +18,9 @@
                             @if (Auth::guest())
                             @else
                             <th>Действия</th>
-                            <th></th>
                             @endif
                         </tr>
                     </thead>
-                    
      @foreach($bsmts as $bsmt)
         <tbody>
              <tr>
@@ -26,25 +28,24 @@
                 <td>{{ $bsmt->modelnumber }}</td>
                 <td>{{ $bsmt->modelimei }}</td>
                 <td>{{ $bsmt->sbsmts ? $bsmt->sbsmts->status:'Данных нет' }}</td>
-                
-                @if (Auth::guest())
-                @else        
-                    <td class="col-xs-1">
-                        <a href="{{ route('edit_bsmt_path', ['bsmt' => $bsmt->id]) }}" class="btn btn-info">Изменить</a>
-                    </td>
-                    <td class="col-xs-1"> 
-                       <form action="{{ route('delete_bsmt_path', ['bsmt' => $bsmt->id]) }}" method="POST">
+                @auth
+                    <td align="right">
+                    <form action="{{ route('delete_bsmt_path', ['bsmt' => $bsmt->id]) }}" method="POST">
+                        <div class="btn-group btn-group-sm" role="group">
+                        <a href="{{ route('edit_bsmt_path', ['bsmt' => $bsmt->id]) }}" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                       
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                           <button type="submit" class='btn btn-danger btn-small'>&nbsp;Удалить&nbsp;&nbsp;</button>
-                       </form>
+                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                    </div>    
+                    </form>    
                     </td>    
-                @endif
+                @endauth
              </tr>
-                       
         </tbody>
      @endforeach
-    
+</div>
+</div>
 </div>
 
  

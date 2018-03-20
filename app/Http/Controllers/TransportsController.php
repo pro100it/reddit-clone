@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Bsmt;
+use App\Customer;
 use App\Transport;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransportRequest;
 use App\Http\Requests\UpdateTransportRequest;
@@ -25,7 +27,8 @@ class TransportsController extends Controller
     {
         $transport = New Transport;
         $bsmts = Bsmt::all(); 
-        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts]);
+        $customers = Customer::all();
+        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
         
     }
    
@@ -33,7 +36,7 @@ class TransportsController extends Controller
     {
         $transport = new Transport;
         $transport->fill(
-            $request->only('model', 'govnumber', 'bsmt_id')
+            $request->only('customer_id','model', 'govnumber', 'bsmt_id')
         );
         $transport->user_id = $request->user()->id;
         $transport->save();
@@ -49,13 +52,14 @@ class TransportsController extends Controller
             return redirect()->route('transports_path');
         }
         $bsmts = Bsmt::all();
-        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts]);
+        $customers = Customer::all();
+        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
     }
 
     public function update(Transport $transport, UpdateTransportRequest $request)
     {
         $transport->update(
-            $request->only('model', 'govnumber', 'bsmt_id' )
+            $request->only('customer_id','model', 'govnumber', 'bsmt_id' )
         );
 
         session()->flash('message', 'Транспорт обновлен!!!');

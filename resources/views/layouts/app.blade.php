@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+   
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -43,6 +43,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        @auth
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Блог <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -53,9 +54,11 @@
                                     <a href="{{ route('store_post_path') }}">Все записи</a>
                                     </li>
                                 </ul>
-                        </li>    
+                        </li>
+                        @endauth
                     </ul>  
                     <ul class="nav navbar-nav">
+                        @auth
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Транспорт <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
@@ -67,8 +70,10 @@
                                 </li>
                             </ul>    
                         </li>
+                        @endauth
                     </ul>
                     <ul class="nav navbar-nav">
+                        @auth
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Производители БСМТ <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
@@ -80,17 +85,21 @@
                                 </li>
                             </ul>    
                         </li>
+                        @endauth
                     </ul>
                     <ul class="nav navbar-nav">
+                        @auth
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Блоки БСМТ <b class="caret"></b></a>
                                 <ul class="dropdown-menu" role="menu">
+                                    
                                     <li>
                                     <a href="{{ route('create_bsmt_path') }}">Добавить блок БСМТ</a>
                                     </li>
                                     <li>
                                     <a href="{{ route('store_bsmt_path') }}">Список блоков БСМТ</a>
                                     </li>
+                                    <li role="separator" class="divider"></li>
                                     <li>
                                     <a href="{{ route('create_sbsmt_path') }}">Добавить статус БСМТ</a>
                                     </li>
@@ -98,16 +107,17 @@
                                     <a href="{{ route('store_sbsmt_path') }}">Список статусов БСМТ</a>
                                     </li>
                                 </ul>
-                        </li>    
+                        </li>
+                        @endauth
                     </ul>                     
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
+                        @guest
                             <li><a href="{{ route('login') }}">Вход</a></li>
                             <li><a href="{{ route('register') }}">Регистрация</a></li>
                         @else
-                            @include('partials.notifications-dropdown')
+                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -127,7 +137,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endif
+                        @endguest
                     </ul>
                 </div>
             </div>
@@ -145,5 +155,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('extra-js')
 </body>
 </html>

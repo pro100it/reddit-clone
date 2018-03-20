@@ -19,7 +19,7 @@ class UpdateTransportRequest extends FormRequest
         return [
         'model' =>     'required',
         'govnumber' => ['required',Rule::unique('transports')->ignore($transport->id)],
-        'bsmt_id' =>   'required'
+        'bsmt_id' =>   ['required',Rule::unique('transports')->ignore($transport->id)]
         ];
     }
 }

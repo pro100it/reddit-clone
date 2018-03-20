@@ -6,7 +6,6 @@ use App\Post;
 use App\Bsmt;
 use App\Transport;
 
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

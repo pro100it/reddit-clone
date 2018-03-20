@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Requests;
-
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,9 +24,10 @@ class CreateTransportRequest extends FormRequest
     public function rules()
     {
         return [
-        'model' =>     'required',
-        'govnumber' => 'required|unique:transports',
-        'bsmt_id' =>   'required'
+        'customer_id' =>     'required',
+        'model' =>           'required',
+        'govnumber' =>       'required|unique:transports',
+        'bsmt_id' =>         'required|unique:transports'
         ];
     }
 }

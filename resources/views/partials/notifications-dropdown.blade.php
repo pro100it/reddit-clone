@@ -1,4 +1,4 @@
-<order-notifications user_id="{{ auth()->user()->id }}"></order-notifications>
+<transport-notifications user_id="{{ auth()->user()->id }}"></transport-notifications>
 
 {{-- <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
