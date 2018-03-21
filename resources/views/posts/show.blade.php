@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <h2>{{ $post->title }}</h2>
             <p>{{ $post->description }}</p>
-            <p>Posted {{ $post->created_at->diffForHumans() }}</p>
+            <p>Posted {{ $post->created_at ? $post->created_at->diffForHumans(): '-' }}</p>
         </div>
     </div>
     <hr>

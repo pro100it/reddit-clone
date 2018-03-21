@@ -17,7 +17,7 @@
                     </small>
                     @endif
                 </h2>
-                <p>Posted {{ $post->created_at->diffForHumans() }} by <b>{{ $post->user->name }}</b></p>
+                <p>Posted {{ $post->created_at ? $post->created_at->diffForHumans(): '-' }} by <b>{{ $post->user->name }}</b></p>
             </div>
         </div>
         <hr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Transport;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
      if (Auth::guest()) {
         return view('welcome'); 
      }  
-        return view('home');
+        $transports = Transport::all();
+        return view('home')->with(['transports' => $transports]);
      
     }
     public function welcome()

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Post;
 use App\Bsmt;
 use App\Customer;
 use App\Transport;
-
+use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransportRequest;
 use App\Http\Requests\UpdateTransportRequest;
@@ -35,11 +37,21 @@ class TransportsController extends Controller
     public function store(CreateTransportRequest $request)
     {
         $transport = new Transport;
+        $post = new Post;
+        
+                
         $transport->fill(
             $request->only('customer_id','model', 'govnumber', 'bsmt_id')
         );
+        
+        DB::insert('insert into posts (title,description,url,user_id) values (?, ?, ?, ?)', 
+                ['Добавлен новый транспорт',
+                'Модель: ' .$request->model. 'Гос.номер: '.$request->govnumber.'','http://localhost',$request->user()->id]);
+        
         $transport->user_id = $request->user()->id;
         $transport->save();
+        //$post->user_id = $request->user()->id;
+        //$post->save();
 
         session()->flash('message', 'Транспорт добавлен!!!');
 
