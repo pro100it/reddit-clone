@@ -20,6 +20,7 @@ class BsmtController extends Controller
     public function show(Bsmt $bsmt)
     {
         return view('bsmts.show',compact('bsmt'));
+        
     }
     
     public function create()

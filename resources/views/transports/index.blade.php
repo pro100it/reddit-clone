@@ -16,7 +16,7 @@
                         <th>Модель</th>
                         <th>Гос.номер</th>
                         <th>Блок БСМТ</th>
-                        <th>Заказчик</th>
+                        {{--  <th>Заказчик</th>  --}}
                         @auth
                           <th>Действия</th>
                         @endauth
@@ -28,7 +28,7 @@
                         <td><a href="{{ route('transport_path', ['transport' => $transport->id]) }}">{{ $transport->model }}</a></td>    
                         <td>{{$transport->govnumber }}</td>
                         <td>{{$transport->bsmts ? $transport->bsmts->modelnumber:'Данных нет' }}</td>
-                        <td>{{$transport->customers ? $transport->customers->customer:'Данных нет' }}</td>
+                        {{--  <td>{{$transport->customers ? $transport->customers->customer:'Данных нет' }}</td>  --}}
                         @auth        
                           <td align="right">
                             <form action="{{ route('delete_transport_path', ['transport' => $transport->id]) }}" method="POST">

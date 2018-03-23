@@ -13,7 +13,7 @@
                     <strong>Модель: </strong>{{ $transport->model }} <br>
                     <strong>Государственный номер: </strong>{{ $transport->govnumber }}<br>
                     <strong>Блок БСМТ: </strong>{{$transport->bsmts ? $transport->bsmts->modelnumber:'Данных нет' }}<br>
-                    <strong>Заказчик: </strong>{{ $transport->customers ? $transport->customers->customer:'Данных нет' }} 
+                    {{--  <strong>Заказчик: </strong>{{ $transport->customers ? $transport->customers->customer:'Данных нет' }}   --}}
                     <br><br><p><b>Добавлено {{ $transport->created_at->diffForHumans() }}</b></p>
                 </div>
             

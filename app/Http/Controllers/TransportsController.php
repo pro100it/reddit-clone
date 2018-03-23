@@ -29,7 +29,7 @@ class TransportsController extends Controller
     {
         $transport = New Transport;
         $bsmts = Bsmt::all(); 
-        $customers = Customer::all();
+        //$customers = Customer::all();
         return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
         
     }
@@ -41,7 +41,8 @@ class TransportsController extends Controller
         
                 
         $transport->fill(
-            $request->only('customer_id','model', 'govnumber', 'bsmt_id')
+            //$request->only('customer_id','model', 'govnumber', 'bsmt_id')
+            $request->only('model', 'govnumber', 'bsmt_id')
         );
         
         DB::insert('insert into posts (title,description,url,user_id) values (?, ?, ?, ?)', 
@@ -50,9 +51,7 @@ class TransportsController extends Controller
         
         $transport->user_id = $request->user()->id;
         $transport->save();
-        //$post->user_id = $request->user()->id;
-        //$post->save();
-
+        
         session()->flash('message', 'Транспорт добавлен!!!');
 
         return redirect()->route('transports_path');
@@ -64,14 +63,16 @@ class TransportsController extends Controller
             return redirect()->route('transports_path');
         }
         $bsmts = Bsmt::all();
-        $customers = Customer::all();
-        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
+        //$customers = Customer::all();
+        //return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
+        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts]);
     }
 
     public function update(Transport $transport, UpdateTransportRequest $request)
     {
         $transport->update(
-            $request->only('customer_id','model', 'govnumber', 'bsmt_id' )
+            //$request->only('customer_id','model', 'govnumber', 'bsmt_id' )
+            $request->only('model', 'govnumber', 'bsmt_id' )
         );
 
         session()->flash('message', 'Транспорт обновлен!!!');

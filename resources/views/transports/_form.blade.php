@@ -27,16 +27,14 @@
         @endforeach
     </select>
         
-    <div class="form-group">
+    {{--  <div class="form-group">
         <label for="customer_id">Заказчик</label>
         <select class="form-control input-sm" name="customer_id" id="customer_id">
         @foreach($customer as $s)
             <option value="{{$s->id}}">{{$s->customer}}</option>
         @endforeach
-    </select>    
-        
-        
-    </div>
+    </select>
+    </div>  --}}
     
     <div class="form-group">
         <button type="submit" class='btn btn-primary'>Сохранить запись</button>
