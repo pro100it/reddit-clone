@@ -30,7 +30,8 @@ class TransportsController extends Controller
         $transport = New Transport;
         $bsmts = Bsmt::all(); 
         //$customers = Customer::all();
-        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
+        //return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
+        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts]);
         
     }
    
