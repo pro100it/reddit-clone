@@ -1,8 +1,9 @@
 <?php
 
 namespace App;
-use App\Customer;
+
 use App\Bsmt;
+use App\TransportActive;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\TransportStatusChanged;
@@ -29,6 +30,10 @@ class Transport extends Model {
         return $this->belongsTo('App\Bsmt','bsmt_id');
     }
     
+    public function transportsactive()
+    {
+        return $this->hasMany(TransportActive::class);
+    }
     //public function customers() {
     //    return $this->belongsTo('App\Customer','customer_id');
     //}

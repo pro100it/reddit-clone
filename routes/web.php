@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::name('update_sbsmt_path')->put('/bsmtstatus/{sbsmt}', 'BstmStatusController@update');
     Route::name('delete_sbsmt_path')->delete('/bsmtstatus/{sbsmt}', 'BstmStatusController@delete');
     
+    
+    
 });
 
 Route::get('/', 'HomeController@index');
