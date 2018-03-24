@@ -59,7 +59,7 @@ class TransportActiveController extends Controller
         $atransport->fill(
             $request->only('customer_id','transport_id','state_id')
         );
-        $vbsmt->save();
+        $atransport->save();
 
         session()->flash('message', 'Транспорт добавлен');
 
@@ -83,9 +83,13 @@ class TransportActiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TransportActive $atransport)
     {
-        //
+        $customers     = Customer::all();
+        $transports    = Transport::all();
+        $states        = State::all();
+        
+        return view('transport_active.edit')->with(['atransport'=>$atransport,'customer'=>$customers,'transport'=>$transports,'state',$states]);
     }
 
     /**

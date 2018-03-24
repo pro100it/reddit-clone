@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="col-md-8 col-md-offset-2">
-    <h2>Добавление транспорта</h2>
-    @include('transports._form', ['transport' => $transport])
+    <h2>Добавление транспорта в учет</h2>
+    @include('transports_active._form', ['atransport' => $atransport])
 </div>    
 @endsection
