@@ -14,14 +14,16 @@
                     @foreach($customer as $c)
                         <option value="{{$c->id}}">{{$c->customer}}</option>
                     @endforeach
+                </select>    
         </div>
     
         <div class="form-group">
             <label for="transport_id">Транспорт:</label>
                 <select class="form-control input-sm" name="transport_id" id="transport_id">
                     @foreach($transport as $t)
-                        <option value="{{$c->id}}">{{$c->model}} {{$c->modelnumber}}</option>
+                        <option value="{{$t->id}}">{{$t->model}} {{$t->modelnumber}}</option>
                     @endforeach
+                </select>    
         </div>
 
         <div class="form-group">

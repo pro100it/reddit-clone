@@ -38,8 +38,8 @@ class TransportActiveController extends Controller
 
         $atransport = new TransportActive; 
 
-        return view('transport_active.create')
-               ->with(['atransport' => $atransport,
+        return view('transports_active.create')
+               ->with(['atransport' => $atransports,
                        'customers'  =>$customers,
                        'transports' =>$transports,
                        'states'     => $states]
@@ -63,7 +63,7 @@ class TransportActiveController extends Controller
 
         session()->flash('message', 'Транспорт добавлен');
 
-        return redirect()->route('atransports_path');
+        return redirect()->route('transports_active_path');
     }
 
     /**
@@ -74,7 +74,7 @@ class TransportActiveController extends Controller
      */
     public function show(TransportActive $atransport)
     {
-        return view('transport_active.show',compact('atransport'));
+        return view('transports_active.show',compact('atransport'));
     }
 
     /**
@@ -89,7 +89,7 @@ class TransportActiveController extends Controller
         $transports    = Transport::all();
         $states        = State::all();
         
-        return view('transport_active.edit')->with(['atransport'=>$atransport,'customer'=>$customers,'transport'=>$transports,'state',$states]);
+        return view('transports_active.edit')->with(['atransport'=>$atransport,'customer'=>$customers,'transport'=>$transports,'state'=>$states]);
     }
 
     /**
@@ -107,7 +107,7 @@ class TransportActiveController extends Controller
 
         session()->flash('message', 'Транспорт обновлен');
 
-        return redirect()->route('atransport_path', ['atransport' => $atransport->id]);
+        return redirect()->route('transport_active_path', ['atransport' => $atransport->id]);
     }
 
     public function delete(TransportActive $atransport)
@@ -117,6 +117,6 @@ class TransportActiveController extends Controller
 
         session()->flash('message', 'Блок БСМТ удален!!!');
 
-        return redirect()->route('atransports_path');
+        return redirect()->route('transports_active_path');
     }
 }

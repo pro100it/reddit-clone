@@ -26,15 +26,15 @@
                 @foreach($atransports as $t)
                 <tbody>
                     <tr>
-                        <td><a href="{{ route('atransport_active_path', ['atransport' => $atransport->id]) }}">{{ $atransport->transports->govnumber }}</a></td>    
-                        <td>{{$atransport->customers ? $atransport->customers->customer:'Данных нет' }}</td>
-                        <td>{{$atransport->transports ? $atransport->transports->govnumber:'Данных нет' }}</td>
-                        <td>{{$atransport->states ? $atransport->state->name_state:'Данных нет' }}</td> 
+                        <td><a href="{{ route('transport_active_path', ['t' => $t->id]) }}">Открыть</a></td>    
+                        <td>{{$t->customers ? $t->customers->customer:'Данных нет' }}</td>
+                        <td>{{$t->transports ? $t->transports->govnumber:'Данных нет' }}</td>
+                        <td>{{$t->states ? $t->states->name_state:'Данных нет' }}</td> 
                         @auth        
                           <td align="right">
-                            <form action="{{ route('delete_transport_active_path', ['atransport' => $atransport->id]) }}" method="POST">
+                            <form action="{{ route('delete_transport_active_path', ['t' => $t->id]) }}" method="POST">
                                 <div class="btn-group btn-group-sm" role="group">
-                                    <a href="{{ route('edit_transport_active_path', ['atransport' => $atransport->id]) }}" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                                    <a href="{{ route('edit_transport_active_path', ['t' => $t->id]) }}" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>

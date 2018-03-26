@@ -110,7 +110,22 @@
                                 </ul>
                         </li>
                         @endauth
-                    </ul>                     
+                    </ul> 
+                    <ul class="nav navbar-nav">
+                        @auth
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Транспорт на линии<b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                <a href="{{ route('create_transport_active_path') }}">Добавить транспорт</a>
+                                </li>
+                                <li>
+                                <a href="{{ route('store_transport_active_path') }}">Список транспорта</a>
+                                </li>
+                            </ul>    
+                        </li>
+                        @endauth
+                    </ul>                    
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

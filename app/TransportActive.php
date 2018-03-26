@@ -21,17 +21,17 @@ class TransportActive extends Model
 
     public function transports() 
     {
-        return $this->belongsTo('Transport','transport_id');
+        return $this->belongsTo('\App\Transport','transport_id');
     }  
 
     public function customers()
     {
-        return $this->belongsTo('Customer', 'customer_id');
+        return $this->belongsTo('\App\Customer', 'customer_id');
     }
 
     public function states()
     {
-        return $this->belongsTo('State','state_id');
+        return $this->belongsTo('App\State','state_id');
     }
 
 }
