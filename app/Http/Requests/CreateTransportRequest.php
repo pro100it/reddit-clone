@@ -24,8 +24,7 @@ class CreateTransportRequest extends FormRequest
     public function rules()
     {
         return [
-        'customer_id' =>     'required',
-        'model' =>           'required',
+         'model' =>           'required',
         'govnumber' =>       'required|unique:transports',
         'bsmt_id' =>         'required|unique:transports'
         ];

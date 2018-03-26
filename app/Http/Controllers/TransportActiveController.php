@@ -45,9 +45,9 @@ class TransportActiveController extends Controller
 
         return view('transports_active.create')
                ->with(['atransport' => $atransports,
-                       'customers'  =>$customers,
-                       'transports' =>$transports,
-                       'states'     => $states]
+                       'customer'  =>$customers,
+                       'transport' =>$transports,
+                       'state'     => $states]
                      );
        
     }
@@ -71,9 +71,9 @@ class TransportActiveController extends Controller
         $state = State::find($request->state_id);
 
         $post = new Post;
-        $post->title       = 'Добавлен новый транспорт на линию';
+        $post->title       = 'Добавлена информация о новом транспорте на линии';
         $post->description = 'Заказчик '.$customer->customer.'<br>Транспорт '.$transport->govnumber.
-        'Статус'.$state->name_state.' ';
+        '<br>Статус '.$state->name_state.' ';
         $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
         $post->user_id = $request->user()->id;
         $post->created_at = date('Y-m-d H:i:s');
@@ -108,7 +108,12 @@ class TransportActiveController extends Controller
         $transports    = Transport::all();
         $states        = State::all();
         
-        return view('transports_active.edit')->with(['atransport'=>$atransport,'customer'=>$customers,'transport'=>$transports,'state'=>$states]);
+        return view('transports_active.edit')->
+            with(['atransport'=>$atransport,
+                  'customer'=>$customers,
+                  'transport'=>$transports,
+                  'state'=>$states]);
+
     }
 
     /**
@@ -123,6 +128,20 @@ class TransportActiveController extends Controller
         $atransport->update(
             $request->only('customer_id','transport_id','state_id')
         );
+
+        $customer = Customer::find($request->customer_id);
+        $transport = Transport::find($request->transport_id);
+        $state = State::find($request->state_id);
+
+        $post = new Post;
+        $post->title       = 'Обновлена информация о транспорте на линии';
+        $post->description = 'Заказчик '.$customer->customer.'<br>Транспорт '.$transport->govnumber.
+        '<br>Статус '.$state->name_state.' ';
+        $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
+        $post->user_id = $request->user()->id;
+        $post->created_at = date('Y-m-d H:i:s');
+        $post->updated_at = date('Y-m-d H:i:s');        
+        $post->save();
 
         session()->flash('message', 'Транспорт обновлен');
 

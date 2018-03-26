@@ -55,7 +55,10 @@ class BsmtController extends Controller
         $vbsmts = VendorBsmt::all();
         $sbsmts = BsmtStatus::all();
         
-        return view('bsmts.edit')->with(['bsmt'=>$bsmt,'vbsmt'=>$vbsmts,'sbsmt'=>$sbsmts]);
+        return view('bsmts.edit')->
+            with(['bsmt'=>$bsmt,
+                  'vbsmt'=>$vbsmts,
+                  'sbsmt'=>$sbsmts]);
         
     }
 

@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="customer_id">Заказчик:</label>
                 <select class="form-control input-sm" name="customer_id" id="customer_id">
-                    @foreach($customers as $c)
+                    @foreach($customer as $c)
                         <option value="{{$c->id}}">{{$c->customer}}</option>
                     @endforeach
                 </select>    
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="transport_id">Транспорт:</label>
                 <select class="form-control input-sm" name="transport_id" id="transport_id">
-                    @foreach($transports as $t)
+                    @foreach($transport as $t)
                         <option value="{{$t->id}}">{{$t->model}} {{$t->modelnumber}}</option>
                     @endforeach
                 </select>    
@@ -29,7 +29,7 @@
         <div class="form-group">
             <label for="state_id">Статус:</label>
             <select class="form-control input-sm" name="state_id" id="state_id">
-            @foreach($states as $s)
+            @foreach($state as $s)
                 <option value="{{$s->id}}">{{$s->name_state}}</option>
             @endforeach
             </select>

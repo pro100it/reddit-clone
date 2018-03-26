@@ -40,7 +40,6 @@
                 </tbody>    
             </div>
         </div>
-        <hr>
     @endforeach
 </div>
     {{ $posts->render() }}
