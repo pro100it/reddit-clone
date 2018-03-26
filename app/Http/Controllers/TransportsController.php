@@ -46,9 +46,11 @@ class TransportsController extends Controller
             $request->only('model', 'govnumber', 'bsmt_id')
         );
         
-        DB::insert('insert into posts (title,description,url,user_id) values (?, ?, ?, ?)', 
+        DB::insert('insert into posts (title,description,url,user_id,created_at,updated_at) values (?, ?, ?, ?, ?, ?)', 
                 ['Добавлен новый транспорт',
-                'Модель: ' .$request->model. 'Гос.номер: '.$request->govnumber.'','http://localhost',$request->user()->id]);
+                'Модель: ' .$request->model. 'Гос.номер: '.$request->govnumber.'',
+                'http://localhost',$request->user()->id,
+                date('Y-m-d H:i:s'),date('Y-m-d H:i:s')]);
         
         $transport->user_id = $request->user()->id;
         $transport->save();

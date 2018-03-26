@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\TransportActive;
+
+use App\Post;
+use App\State;
 use App\Customer;
 use App\Transport;
-use App\State;
+use App\TransportActive;
+
+
+
 
 use App\Http\Requests\CreateTransportActiveRequest;
 use App\Http\Requests\UpdateTransportActiveRequest;
@@ -36,7 +41,7 @@ class TransportActiveController extends Controller
         $transports = Transport::all();
         $states     = State::all();
 
-        $atransport = new TransportActive; 
+        $atransports = new TransportActive; 
 
         return view('transports_active.create')
                ->with(['atransport' => $atransports,
@@ -60,6 +65,20 @@ class TransportActiveController extends Controller
             $request->only('customer_id','transport_id','state_id')
         );
         $atransport->save();
+
+        $customer = Customer::find($request->customer_id);
+        $transport = Transport::find($request->transport_id);
+        $state = State::find($request->state_id);
+
+        $post = new Post;
+        $post->title       = 'Добавлен новый транспорт на линию';
+        $post->description = 'Заказчик '.$customer->customer.'<br>Транспорт '.$transport->govnumber.
+        'Статус'.$state->name_state.' ';
+        $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
+        $post->user_id = $request->user()->id;
+        $post->created_at = date('Y-m-d H:i:s');
+        $post->updated_at = date('Y-m-d H:i:s');        
+        $post->save();
 
         session()->flash('message', 'Транспорт добавлен');
 
