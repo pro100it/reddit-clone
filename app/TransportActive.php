@@ -17,7 +17,7 @@ class TransportActive extends Model
         'state_id'     => 'integer'
       ];
 
-    protected $fillable = ['customer_id','transport_id','state_id'];
+    protected $fillable = ['customer_id','transport_id','state_id', 'info'];
 
     public function transports() 
     {

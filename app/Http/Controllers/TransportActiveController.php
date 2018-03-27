@@ -62,7 +62,7 @@ class TransportActiveController extends Controller
     {
         $atransport = new TransportActive;
         $atransport->fill(
-            $request->only('customer_id','transport_id','state_id')
+            $request->only('customer_id','transport_id','state_id', 'info')
         );
         $atransport->save();
 
@@ -70,10 +70,15 @@ class TransportActiveController extends Controller
         $transport = Transport::find($request->transport_id);
         $state = State::find($request->state_id);
 
+        /**
+         * Выводим информацию в таблицу пост о добавлении транспорта на линию
+         */
         $post = new Post;
         $post->title       = 'Добавлена информация о новом транспорте на линии';
-        $post->description = 'Заказчик '.$customer->customer.'<br>Транспорт '.$transport->govnumber.
-        '<br>Статус '.$state->name_state.' ';
+        $post->description = 'Заказчик '.$customer->customer.
+                             '<br>Транспорт '.$transport->govnumber.
+                             '<br>Статус '.$state->name_state.
+                             '<br>Дополнительная информация'.$atransport->info.'';
         $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
         $post->user_id = $request->user()->id;
         $post->created_at = date('Y-m-d H:i:s');
@@ -126,17 +131,22 @@ class TransportActiveController extends Controller
     public function update(TransportActive $atransport, UpdateTransportActiveRequest $request)
     {
         $atransport->update(
-            $request->only('customer_id','transport_id','state_id')
+            $request->only('customer_id','transport_id','state_id', 'info')
         );
 
         $customer = Customer::find($request->customer_id);
         $transport = Transport::find($request->transport_id);
         $state = State::find($request->state_id);
 
+        /**
+         * Выводим информацию в таблицу пост об обновлении транспорта
+         */
         $post = new Post;
         $post->title       = 'Обновлена информация о транспорте на линии';
-        $post->description = 'Заказчик '.$customer->customer.'<br>Транспорт '.$transport->govnumber.
-        '<br>Статус '.$state->name_state.' ';
+        $post->description = 'Заказчик '.$customer->customer.
+                             '<br>Транспорт '.$transport->govnumber.
+                             '<br>Статус '.$state->name_state. 
+                             '<br>Дополнительная информация'.$atransport->info.'';
         $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
         $post->user_id = $request->user()->id;
         $post->created_at = date('Y-m-d H:i:s');
@@ -153,7 +163,7 @@ class TransportActiveController extends Controller
         
         $atransport->delete();
 
-        session()->flash('message', 'Блок БСМТ удален!!!');
+        session()->flash('message', 'Транспорт удален из базы !!!');
 
         return redirect()->route('transports_active_path');
     }

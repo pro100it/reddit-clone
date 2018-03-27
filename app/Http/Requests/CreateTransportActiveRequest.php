@@ -24,10 +24,10 @@ class CreateTransportActiveRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' =>     'required',
-            'transport_id' =>           'required',
-            'state_id' =>       'required'
-            
+            'customer_id'   => 'required',
+            'transport_id'  => 'required',
+            'state_id'      => 'required',
+            'info'          => 'required'
             ];
     }
 }

@@ -12,7 +12,7 @@
         <label for="model">Производитель БСМТ:</label>
         <select class="form-control input-sm" name="vendor_id" id="vendor_id">
         @foreach($vbsmt as $d)
-            <option value="{{$d->id}}">{{$d->vendorname}}</option>
+            <option value="{{$d->id}}" {{$d->id == $bsmt->vendor_id ? 'selected' : ''}}>{{$d->vendorname}}</option>
         @endforeach
         </select>
     </div>
@@ -32,7 +32,7 @@
         <label for="status">Статус БСМТ:</label>
         <select class="form-control input-sm" name="statusbsmt_id" id="statusbsmt_id">
         @foreach($sbsmt as $s)
-            <option value="{{$s->id}}">{{$s->status}}</option>
+            <option value="{{$s->id}}"{{$s->id == $bsmt->statusbsmt_id ? 'selected' : ''}}>{{$s->status}}</option>
         @endforeach
         </select>
     </div>
