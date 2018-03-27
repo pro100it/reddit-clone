@@ -11,7 +11,7 @@
                 </div>
                 <div class="well">
                     <strong>Заказчик: </strong>{{ $atransport->customers ? $atransport->customers->customer:'Данных нет'  }} <br>
-                    <strong>Транспорт: </strong>{{ $atransport->transports ? $atransport->transports->govnumber:'Данных нет' }}<br>
+                    <strong>Транспорт: </strong>{{ $atransport->transports ? $atransport->transports->model:''}} | {{ $atransport->transports ? $atransport->transports->govnumber:'Данных нет' }}<br>
                     <strong>Статус </strong>{{$atransport->states ? $atransport->states->name_state:'Данных нет' }}<br>
                     {{--  <strong>Заказчик: </strong>{{ $transport->customers ? $transport->customers->customer:'Данных нет' }}   --}}
                     <br><br><p><b>Добавлено {{ $atransport->created_at->diffForHumans() }}</b></p>

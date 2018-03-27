@@ -112,20 +112,20 @@
                         @endauth
                     </ul> 
                     <ul class="nav navbar-nav">
-                        @auth
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Транспорт на линии<b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                <a href="{{ route('create_transport_active_path') }}">Добавить транспорт</a>
-                                </li>
-                                <li>
-                                <a href="{{ route('store_transport_active_path') }}">Список транспорта</a>
-                                </li>
-                            </ul>    
-                        </li>
-                        @endauth
-                    </ul>                    
+                            @auth
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Транспорт на линии<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                    <a href="{{ route('create_transport_active_path') }}">Добавить транспорт</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{ route('store_transport_active_path') }}">Список транспорта</a>
+                                    </li>
+                                </ul>    
+                            </li>
+                            @endauth
+                        </ul>                    
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -159,19 +159,16 @@
             </div>
         </nav>
 
-                <div class="container">
-            @include('layouts._errors')
-        
-           @include('layouts._messages')
-
-            @yield('content')
-        </div>
+    <div class="container">
+        @include('layouts._errors')
+        @include('layouts._messages')
+        @yield('content')
+    </div>
                 
-        </div>
+</div>
 
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('extra-js')
     
 </body>
 </html>    
-    

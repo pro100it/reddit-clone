@@ -21,9 +21,9 @@
         <div class="form-group">
             <label for="bsmt_id">Блок БСМТ:</label>
             <select class="form-control input-sm" name="bsmt_id" id="bsmt_id">
-            @foreach($bsmt as $d)
-                <option value="{{$d->id}}">{{$d->model}} {{$d->modelnumber}}</option>
-            @endforeach
+                @foreach($bsmt as $d)
+                     <option value="{{$d->id}}" {{$d->id == $transport->bsmt_id ? 'selected' : ''}}>{{$d->model}} {{$d->modelnumber}}</option>
+                @endforeach
             </select>
         </div>
 

@@ -46,12 +46,6 @@ class TransportsController extends Controller
             $request->only('model', 'govnumber', 'bsmt_id')
         );
         
-        DB::insert('insert into posts (title,description,url,user_id,created_at,updated_at) values (?, ?, ?, ?, ?, ?)', 
-                ['Добавлен новый транспорт',
-                'Модель: ' .$request->model. 'Гос.номер: '.$request->govnumber.'',
-                'http://localhost',$request->user()->id,
-                date('Y-m-d H:i:s'),date('Y-m-d H:i:s')]);
-        
         $transport->user_id = $request->user()->id;
         $transport->save();
         
@@ -65,9 +59,8 @@ class TransportsController extends Controller
         if($transport->user_id != \Auth::user()->id) {
             return redirect()->route('transports_path');
         }
+      
         $bsmts = Bsmt::all();
-        //$customers = Customer::all();
-        //return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
         return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts]);
     }
 

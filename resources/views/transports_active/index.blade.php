@@ -28,7 +28,7 @@
                     <tr>
                         <td><a href="{{ route('transport_active_path', ['t' => $t->id]) }}">Открыть</a></td>    
                         <td>{{$t->customers ? $t->customers->customer:'Данных нет' }}</td>
-                        <td>{{$t->transports ? $t->transports->govnumber:'Данных нет' }}</td>
+                        <td>{{$t->transports ? $t->transports->model:'' }} | {{$t->transports ? $t->transports->govnumber:'Данных нет' }}</td>
                         <td>{{$t->states ? $t->states->name_state:'Данных нет' }}</td> 
                         @auth        
                           <td align="right">
@@ -43,6 +43,9 @@
                            </td>    
                         @endauth
                     </tr>
+                    <tr class="bg-warning">
+                        <td colspan="5">{{$t->info ? $t->info:'Данных нет' }}
+                    </tr>    
                 </tbody> 
                 @endforeach
             </table>
