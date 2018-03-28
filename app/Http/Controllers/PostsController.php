@@ -36,7 +36,7 @@ class PostsController extends Controller
         $post->user_id = $request->user()->id;
         $post->save();
 
-        session()->flash('message', 'Post Created!');
+        session()->flash('message', 'Запись создана!');
 
         return redirect()->route('posts_path');
     }
@@ -56,7 +56,7 @@ class PostsController extends Controller
             $request->only('title', 'description', 'url')
         );
 
-        session()->flash('message', 'Post Updated!');
+        session()->flash('message', 'Запись обновлена!');
 
         return redirect()->route('post_path', ['post' => $post->id]);
     }
@@ -69,7 +69,7 @@ class PostsController extends Controller
 
         $post->delete();
 
-        session()->flash('message', 'Post Deleted!');
+        session()->flash('message', 'Запись удалена!');
 
         return redirect()->route('posts_path');
     }

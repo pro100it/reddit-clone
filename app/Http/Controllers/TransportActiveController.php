@@ -75,10 +75,10 @@ class TransportActiveController extends Controller
          */
         $post = new Post;
         $post->title       = 'Добавлена информация о новом транспорте на линии';
-        $post->description = 'Заказчик '.$customer->customer.
-                             '<br>Транспорт '.$transport->govnumber.
-                             '<br>Статус '.$state->name_state.
-                             '<br>Дополнительная информация'.$atransport->info.'';
+        $post->description = 'Заказчик: '.$customer->customer.
+                             '<br>Транспорт: '.$transport->govnumber.
+                             '<br>Статус: '.$state->name_state.
+                             '<br>Дополнительная информация:<br>'.$atransport->info.'';
         $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
         $post->user_id = $request->user()->id;
         $post->created_at = date('Y-m-d H:i:s');
@@ -144,9 +144,9 @@ class TransportActiveController extends Controller
         $post = new Post;
         $post->title       = 'Обновлена информация о транспорте на линии';
         $post->description = 'Заказчик '.$customer->customer.
-                             '<br>Транспорт '.$transport->govnumber.
-                             '<br>Статус '.$state->name_state. 
-                             '<br>Дополнительная информация'.$atransport->info.'';
+                             '<br>Транспорт: '.$transport->govnumber.
+                             '<br>Статус: '.$state->name_state. 
+                             '<br>Дополнительная информация:<br>'.$atransport->info.'';
         $post->url = route('transport_active_path', ['atransport' => $atransport->id]);
         $post->user_id = $request->user()->id;
         $post->created_at = date('Y-m-d H:i:s');
