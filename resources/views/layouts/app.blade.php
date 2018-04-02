@@ -126,6 +126,21 @@
                             </li>
                             @endauth
                         </ul>
+                        <ul class="nav navbar-nav">
+                            @auth
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Марки транспорта<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                    <a href="{{ route('create_modeltransport_path') }}">Добавить марку транспорта</a>
+                                    </li>
+                                    <li>
+                                    <a href="{{ route('store_modeltransport_path') }}">Список марок транспорта</a>
+                                    </li>
+                                </ul>    
+                            </li>
+                            @endauth
+                        </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

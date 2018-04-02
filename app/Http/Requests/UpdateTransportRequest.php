@@ -17,7 +17,7 @@ class UpdateTransportRequest extends FormRequest
         $transport = $this->route('transport');
         
         return [
-        'model' =>     'required',
+        'model_name_id' =>     'required',
         'govnumber' => ['required',Rule::unique('transports')->ignore($transport->id)],
         'bsmt_id' =>   ['required',Rule::unique('transports')->ignore($transport->id)]
         ];

@@ -7,7 +7,7 @@ use App\Post;
 use App\Bsmt;
 use App\Customer;
 use App\Transport;
-use App\TransportModel;
+use App\ModelTransport;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransportRequest;
@@ -29,10 +29,10 @@ class TransportsController extends Controller
     public function create()
     {
         $transport = New Transport;
-        $bsmts = Bsmt::all(); 
+        $modeltransports = ModelTransport::all(); 
         //$customers = Customer::all();
         //return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
-        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts]);
+        return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts,'modeltransport'=>$modeltransports]);
         
     }
    
@@ -62,14 +62,15 @@ class TransportsController extends Controller
         }
       
         $bsmts = Bsmt::all();
-        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts]);
+        $modeltransports = ModelTransport::all();
+        return view('transports.edit')->with(['transport' => $transport,'bsmt'=>$bsmts,'modeltransport'=>$modeltransports]);
     }
 
     public function update(Transport $transport, UpdateTransportRequest $request)
     {
         $transport->update(
             //$request->only('customer_id','model', 'govnumber', 'bsmt_id' )
-            $request->only('model', 'govnumber', 'bsmt_id' )
+            $request->only('model_name_id', 'govnumber', 'bsmt_id' )
         );
 
         session()->flash('message', 'Транспорт обновлен!!!');

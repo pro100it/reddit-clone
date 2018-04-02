@@ -9,10 +9,15 @@
 
     
         <div class="form-group">
-            <label for="model">Модель:</label>
-            <input type="text" name="model" class="form-control" value="{{ $transport->model or old('model') }}"/>
+            <label for="model_name_id">Марка ТС:</label>
+                <select class="form-control input-sm" name="model_name_id" id="model_name_id">
+                    @foreach($modeltransport as $m)
+                        <option value="{{$m->id}}"{{$m->id == $transport->model_name_id ? 'selected' : ''}}>{{$m->model_name}}</option>
+                    @endforeach
+            </select>    
         </div>
-    
+
+           
         <div class="form-group">
             <label for="govnumber">Государственный номер:</label>
             <input type="text" name="govnumber" class="form-control" value="{{ $transport->govnumber or old('govnumber') }}"/>

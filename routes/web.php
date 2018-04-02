@@ -26,6 +26,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::name('update_transport_active_path')->put('/transports_active/{atransport}', 'TransportActiveController@update');
     Route::name('delete_transport_active_path')->delete('/transports_active/{atransport}', 'TransportActiveController@delete');
 
+    //Model Transport
+    Route::name('create_modeltransport_path')->get('/modeltransports/create', 'ModelTransportController@create'); 
+    Route::name('store_modeltransport_path')->post('/modeltransports', 'ModelTransportController@store');
+    Route::name('edit_modeltransport_path')->get('/transports/{modeltransport}/edit', 'ModelTransportController@edit');
+    Route::name('update_modeltransport_path')->put('/modeltransports/{modeltransport}', 'ModelTransportController@update');
+    Route::name('delete_modeltransport_path')->delete('/modeltransports/{modeltransport}', 'ModelTransportController@delete');
+
     //BSMT
     Route::name('create_bsmt_path')->get('/bsmts/create', 'BsmtController@create'); 
     Route::name('store_bsmt_path')->post('/bsmts', 'BsmtController@store');
@@ -76,3 +83,7 @@ Route::name('sbsmt_path')->get('/bsmtstatus/{sbsmt}','BstmStatusController@show'
 //Transport active not auth
 Route::name('transports_active_path')->get('/transports_active', 'TransportActiveController@index');
 Route::name('transport_active_path')->get('/transports_active/{atransport}', 'TransportActiveController@show');
+
+//Transport not auth
+Route::name('modeltransports_path')->get('/modeltransports', 'ModelTransportController@index');
+Route::name('modeltransport_path')->get('/modeltransports/{modeltransport}', 'ModelTransportController@show');

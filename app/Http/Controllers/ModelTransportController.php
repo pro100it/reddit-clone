@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ModelTransport;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateModelTransportRequest;
+use App\Http\Requests\UpdateModelTransportRequest;
 
 class ModelTransportController extends Controller
 {
@@ -26,7 +28,7 @@ class ModelTransportController extends Controller
         
     }
     
-    public function store(CreateModeltransportsRequest $request)
+    public function store(CreateModelTransportRequest $request)
     {
         $modeltransport = new ModelTransport;
         $modeltransport->fill(

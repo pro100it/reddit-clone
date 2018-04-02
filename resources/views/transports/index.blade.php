@@ -25,7 +25,7 @@
                 @foreach($transports as $transport)
                 <tbody>
                     <tr>
-                        <td><a href="{{ route('transport_path', ['transport' => $transport->id]) }}">{{ $transport->model ? $transport->modeltransports->model_name:'Данных нет' }}</a></td>    
+                        <td><a href="{{ route('transport_path', ['transport' => $transport->id]) }}">{{ $transport->modeltransports ? $transport->modeltransports->model_name:'Данных нет' }}</a></td>    
                         <td>{{$transport->govnumber }}</td>
                         <td>{{$transport->bsmts ? $transport->bsmts->modelnumber:'Данных нет' }}</td>
                         {{--  <td>{{$transport->customers ? $transport->customers->customer:'Данных нет' }}</td>  --}}

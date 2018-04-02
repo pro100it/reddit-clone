@@ -4,6 +4,7 @@ namespace App;
 
 use App\Bsmt;
 use App\TransportActive;
+use App\ModelTransport;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Events\TransportStatusChanged;
@@ -19,7 +20,7 @@ class Transport extends Model {
         ];
 
     //protected $fillable = ['customer_id','model', 'govnumber','bsmt_id'];
-    protected $fillable = ['model', 'govnumber','bsmt_id'];
+    protected $fillable = ['model_name_id', 'govnumber','bsmt_id'];
 
     public function user()
     {
@@ -37,6 +38,10 @@ class Transport extends Model {
     //public function customers() {
     //    return $this->belongsTo('App\Customer','customer_id');
     //}
+
+    public function modeltransports() {
+        return $this->belongsTo('App\ModelTransport','model_name_id');
+    }
     
     public function wasCreatedBy($user)
     {

@@ -1,4 +1,4 @@
-@if( $vbsmt->exists )
+@if( $modeltransport->exists )
     <form action="{{ route('update_modeltransport_path', ['modeltransport' => $modeltransport->id]) }}" method="POST">
     {{ method_field('PUT') }}
 @else
