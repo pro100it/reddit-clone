@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::name('update_transport_path')->put('/transports/{transport}', 'TransportsController@update');
     Route::name('delete_transport_path')->delete('/transports/{transport}', 'TransportsController@delete');
     
+    //Transport active
     Route::name('create_transport_active_path')->get('/transports_active/create', 'TransportActiveController@create'); 
     Route::name('store_transport_active_path')->post('/transports_active', 'TransportActiveController@store');
     Route::name('edit_transport_active_path')->get('/transports_active/{atransport}/edit', 'TransportActiveController@edit');
@@ -72,6 +73,6 @@ Route::name('vbsmt_path')->get('/bsmtvendors/{vbsmt}','VendorBsmtController@show
 Route::name('sbsmts_path')->get('/bsmtstatus','BstmStatusController@index');
 Route::name('sbsmt_path')->get('/bsmtstatus/{sbsmt}','BstmStatusController@show');
 
-//Transport not auth
+//Transport active not auth
 Route::name('transports_active_path')->get('/transports_active', 'TransportActiveController@index');
 Route::name('transport_active_path')->get('/transports_active/{atransport}', 'TransportActiveController@show');

@@ -7,6 +7,7 @@ use App\Post;
 use App\Bsmt;
 use App\Customer;
 use App\Transport;
+use App\TransportModel;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTransportRequest;
@@ -43,7 +44,7 @@ class TransportsController extends Controller
                 
         $transport->fill(
             //$request->only('customer_id','model', 'govnumber', 'bsmt_id')
-            $request->only('model', 'govnumber', 'bsmt_id')
+            $request->only('model_name_id', 'govnumber', 'bsmt_id')
         );
         
         $transport->user_id = $request->user()->id;

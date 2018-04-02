@@ -4,8 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateVendorBsmtRequest extends FormRequest
+class UpdateModelTransportRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
     public function authorize()
     {
         return $this->user()->id;
@@ -18,9 +23,9 @@ class UpdateVendorBsmtRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'vendorname' => 'required'
-            
+        return 
+        [
+            'model_name' =>     'required'
         ];
     }
 }
