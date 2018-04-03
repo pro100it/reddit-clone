@@ -21,7 +21,7 @@ class TransportsController extends Controller
         return view('transports.index')->with(['transports' => $transports]);
     }
 
-    public function SortBy
+    
     public function show(Transport $transport)
     {
         return view('transports.show',compact('transport'));
