@@ -43,7 +43,7 @@ class ModelTransportController extends Controller
 
     public function edit(ModelTransport $modeltransport)
     {
-        return view('modeltransports.edit')->with(['modeltransport'=>$modeltransports]);
+        return view('modeltransports.edit')->with(['modeltransport'=>$modeltransport]);
     }
 
     public function update(ModelTransport $modeltransport, UpdateModelTransportRequest $request)

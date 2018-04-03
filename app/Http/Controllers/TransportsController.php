@@ -21,6 +21,7 @@ class TransportsController extends Controller
         return view('transports.index')->with(['transports' => $transports]);
     }
 
+    public function SortBy
     public function show(Transport $transport)
     {
         return view('transports.show',compact('transport'));
@@ -29,7 +30,8 @@ class TransportsController extends Controller
     public function create()
     {
         $transport = New Transport;
-        $modeltransports = ModelTransport::all(); 
+        $modeltransports = ModelTransport::all();
+        $bsmts = Bsmt::all();         
         //$customers = Customer::all();
         //return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts, 'customer'=>$customers]);
         return view('transports.create')->with(['transport' => $transport,'bsmt'=>$bsmts,'modeltransport'=>$modeltransports]);

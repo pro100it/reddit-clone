@@ -3,6 +3,11 @@
 @section('content')
 
 <div class="row">
+    @auth
+        <div style="text-align: right">  
+            <a class="btn btn-default btn-sm" href="{{ route('create_transport_path') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true">Добавить</span></a>
+        </div>
+    @endauth
             <div class="table-responsive">
                 <table class="table table-border">
                      <thead>

@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Model Transport
     Route::name('create_modeltransport_path')->get('/modeltransports/create', 'ModelTransportController@create'); 
     Route::name('store_modeltransport_path')->post('/modeltransports', 'ModelTransportController@store');
-    Route::name('edit_modeltransport_path')->get('/transports/{modeltransport}/edit', 'ModelTransportController@edit');
+    Route::name('edit_modeltransport_path')->get('/modeltransports/{modeltransport}/edit', 'ModelTransportController@edit');
     Route::name('update_modeltransport_path')->put('/modeltransports/{modeltransport}', 'ModelTransportController@update');
     Route::name('delete_modeltransport_path')->delete('/modeltransports/{modeltransport}', 'ModelTransportController@delete');
 
