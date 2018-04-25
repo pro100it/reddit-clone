@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Transport;
+use App\Bsmt;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,11 @@ class HomeController extends Controller
         return view('welcome'); 
      }  
         $transports = Transport::all();
-        return view('home')->with(['transports' => $transports]);
+        $bsmts      = Bsmt::all();
+        return view('home')
+            ->with(['transports' => $transports])
+            ->with(['bstms'      => $bsnts])
+            ;
      
     }
     public function welcome()

@@ -13,7 +13,7 @@ class CreateVendorsbsmtTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendorbsmt', function (Blueprint $table) 
+        Schema::create('vendor_bsmt', function (Blueprint $table) 
         {
             $table->increments('id');
             $table->string('vendorname',50);
@@ -28,6 +28,6 @@ class CreateVendorsbsmtTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendorbsmt');
+        Schema::dropIfExists('vendor_bsmt');
     }
 }

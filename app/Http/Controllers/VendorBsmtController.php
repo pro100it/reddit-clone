@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\VendorBsmt;
+use App\Vendor_Bsmt;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateVendorBsmtRequest;
 use App\Http\Requests\UpdateVendorBsmtRequest;
@@ -10,11 +10,11 @@ class VendorBsmtController extends Controller
 {
     public function index()
     {
-       $vbsmts = VendorBsmt::all(); 
+       $vbsmts = Vendor_Bsmt::all(); 
        return view('bsmtvendors.index',['vbsmts'=>$vbsmts]);
     }
     
-    public function show(VendorBsmt $vbsmt)
+    public function show(Vendor_Bsmt $vbsmt)
     {
         return view('bsmtvendors.show',compact('vbsmt'));
     }
@@ -22,14 +22,14 @@ class VendorBsmtController extends Controller
     public function create()
     {
         
-       $vbsmt = new VendorBsmt; 
+       $vbsmt = new Vendor_Bsmt; 
         return view('bsmtvendors.create',compact('vbsmt'));
         
     }
     
     public function store(CreateVendorBsmtRequest $request)
     {
-        $vbsmt = new VendorBsmt;
+        $vbsmt = new Vendor_Bsmt;
         $vbsmt->fill(
             $request->only('vendorname')
         );
@@ -40,12 +40,12 @@ class VendorBsmtController extends Controller
         return redirect()->route('vbsmts_path');
     }
 
-    public function edit(VendorBsmt $vbsmt)
+    public function edit(Vendor_Bsmt $vbsmt)
     {
         return view('bsmtvendors.edit')->with(['vbsmt'=>$vbsmt]);
     }
 
-    public function update(VendorBsmt $vbsmt, UpdateVendorBsmtRequest $request)
+    public function update(Vendor_Bsmt $vbsmt, UpdateVendorBsmtRequest $request)
     {
         $vbsmt->update(
             $request->only('vendorname' )
@@ -56,7 +56,7 @@ class VendorBsmtController extends Controller
         return redirect()->route('vbsmt_path', ['vbsmt' => $vbsmt->id]);
     }
 
-    public function delete(VendorBsmt $vbsmt)
+    public function delete(Vendor_Bsmt $vbsmt)
     {
         
         //if(\Auth::user()) {

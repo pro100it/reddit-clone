@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bsmt;
-use App\VendorBsmt;
+use App\Vendor_Bsmt;
 use App\BsmtStatus;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBsmtRequest;
@@ -27,7 +27,7 @@ class BsmtController extends Controller
     {
         
        $bsmt = new Bsmt; 
-       $vbsmts = VendorBsmt::all(); 
+       $vbsmts = Vendor_Bsmt::all(); 
        $sbsmts = BsmtStatus::all();
        return view('bsmts.create')
                ->with(['bsmt' => $bsmt,
@@ -52,7 +52,7 @@ class BsmtController extends Controller
 
     public function edit(Bsmt $bsmt)
     {
-        $vbsmts = VendorBsmt::all();
+        $vbsmts = Vendor_Bsmt::all();
         $sbsmts = BsmtStatus::all();
         
         return view('bsmts.edit')->

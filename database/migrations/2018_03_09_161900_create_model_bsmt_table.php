@@ -23,7 +23,7 @@ class CreateModelBsmtTable extends Migration
             
             $table->foreign('vendor_id')
                     ->references('id')
-                    ->on('vendorbsmt')
+                    ->on('vendor_bsmt')
                     ->onDelete('set null');
             
             $table->foreign('statusbsmt_id')
