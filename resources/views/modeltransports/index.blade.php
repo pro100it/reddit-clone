@@ -1,23 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="row">
-    @auth
+<div class="col-md-8 col-md-offset-2">
+    <div class="row">
+        @auth
         <div style="text-align: right">  
-            <a class="btn btn-default btn-sm" href="{{ route('create_transport_path') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true">Добавить</span></a>
+            <a class="btn btn-default btn-sm" href="{{ route('create_modeltransport_path') }}"><span class="glyphicon glyphicon-plus" aria-hidden="true">Добавить</span></a>
         </div>
-    @endauth
+        @endauth
             <div class="table-responsive">
                 <table class="table table-border">
                      <thead>
                         <tr class="bg-primary">
                             <th>Марка ТС</th>
-                            @if (Auth::guest())
-                            @else
-                            <th>Действия</th>
-                            <th></th>
-                            @endif
+                            @auth
+                            <th style="text-align:right">Действия</th>
+                            @endauth
                         </tr>
                     </thead>
                     
@@ -25,25 +23,26 @@
         <tbody>
              <tr>
                 <td><a href="{{ route('modeltransport_path', ['modeltransport' => $s->id]) }}">{{ $s->model_name }}</a></td>    
-                @if (Auth::guest())
-                @else        
-                    <td class="col-xs-1">
-                        <a href="{{ route('edit_modeltransport_path', ['modeltransport' => $s->id]) }}" class="btn btn-info">Изменить</a>
-                    </td>
-                    <td class="col-xs-1"> 
+                @auth
+                <td align="right">
                        <form action="{{ route('delete_modeltransport_path', ['modeltransport' => $s->id]) }}" method="POST">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                           <button type="submit" class='btn btn-danger btn-small'>&nbsp;Удалить&nbsp;&nbsp;</button>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ route('edit_modeltransport_path', ['modeltransport' => $s->id]) }}" class="btn btn-success"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button>
+                            </div>
                        </form>
-                    </td>    
-                @endif
+                </td>    
+                @endauth
              </tr>
-                       
         </tbody>
      @endforeach
-    
+                </table>
+        </div>
+    </div>
 </div>
+
 
  
 @endsection                

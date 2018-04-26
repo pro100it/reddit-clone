@@ -13,7 +13,7 @@
                 <tr class="bg-primary">
                     <th>Статус</th>
                     @Auth
-                    <th>Действия</th>
+                    <th style="text-align:right">Действия</th>
                     @endauth
                 </tr>
             </thead>

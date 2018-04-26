@@ -1,27 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<hr>
-
-     <div class="row">
-        <div class="table-responsive">
-            <h2><b>Статус БСМТ</b></h2>
-            <br>
-            <br>
-            <table class="table table-borderless">
-                <thead>
-                    <tr class="bg-primary">
-                        <th>Статус</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ $sbsmt->status }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </tr>   
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 
+                    <strong>Статус БСМТ</strong>
+                </div>    
+                <div class="well">
+                    <strong>Статус: </strong>{{ $sbsmt->status }}
+                </div>
+            </div>
+            <center>
+                <a class="btn btn-primary" href="{{ route('store_sbsmt_path') }}"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Назад в список</a>
+            </center>        
         </div>
     </div>
-    <hr>
+</div>
+
 @endsection

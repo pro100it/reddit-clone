@@ -16,7 +16,7 @@
                             <th>Производитель</th>
                             @if (Auth::guest())
                             @else
-                            <th>Действия</th>
+                            <th style="text-align:right">Действия</th>
                            
                             @endif
                         </tr>

@@ -18,7 +18,7 @@
                         <th>Блок БСМТ</th>
                         {{--  <th>Заказчик</th>  --}}
                         @auth
-                          <th>Действия</th>
+                          <th style="text-align:right">Действия</th>
                         @endauth
                     </tr>
                 </thead>
