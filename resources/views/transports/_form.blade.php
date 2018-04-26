@@ -19,8 +19,8 @@
 
            
         <div class="form-group">
-            <label for="govnumber">Государственный номер:</label>
-            <input type="text" name="govnumber" class="form-control" value="{{ $transport->govnumber or old('govnumber') }}"/>
+            <label for="gov_number">Государственный номер:</label>
+            <input type="text" name="gov_number" class="form-control" value="{{ $transport->gov_number or old('gov_number') }}"/>
         </div>
     
         <div class="form-group">

@@ -33,7 +33,7 @@ class HomeController extends Controller
         $bsmts      = Bsmt::all();
         return view('home')
             ->with(['transports' => $transports])
-            ->with(['bstms'      => $bsnts])
+            ->with(['bsmts'      => $bsmts])
             ;
      
     }

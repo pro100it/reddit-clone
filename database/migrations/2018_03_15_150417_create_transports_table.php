@@ -17,7 +17,7 @@ class CreateTransportsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('model',10);
-            $table->string('govnumber',10);
+            $table->string('gov_number',10);
             $table->integer('bsmt_id')->unsigned()->nullable();
             $table->timestamps(); 
             

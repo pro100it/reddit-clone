@@ -25,7 +25,7 @@ class CreateTransportRequest extends FormRequest
     {
         return [
         'model_name_id' =>           'required',
-        'govnumber' =>       'required|unique:transports',
+        'gov_number' =>       'required|unique:transports',
         'bsmt_id' =>         'required|unique:transports'
         ];
     }

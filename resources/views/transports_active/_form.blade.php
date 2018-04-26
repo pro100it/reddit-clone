@@ -21,7 +21,7 @@
             <label for="transport_id">Транспорт:</label>
                 <select class="form-control input-sm" name="transport_id" id="transport_id">
                     @foreach($transport as $t)
-                        <option value="{{$t->id}}"{{$t->id == $atransport->transport_id ? 'selected' : ''}}>{{$t->model}} | {{$t->govnumber}}</option>
+                        <option value="{{$t->id}}"{{$t->id == $atransport->transport_id ? 'selected' : ''}}>{{$t->model}} | {{$t->gov_number}}</option>
                     @endforeach
                 </select>    
         </div>

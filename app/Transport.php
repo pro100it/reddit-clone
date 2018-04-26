@@ -19,8 +19,7 @@ class Transport extends Model {
          // 'customer_id' => 'integer'
         ];
 
-    //protected $fillable = ['customer_id','model', 'govnumber','bsmt_id'];
-    protected $fillable = ['model_name_id', 'govnumber','bsmt_id'];
+    protected $fillable = ['model_name_id', 'gov_number','bsmt_id'];
 
     public function user()
     {

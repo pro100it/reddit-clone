@@ -28,7 +28,7 @@
                     <tr>
                         <td><a href="{{ route('transport_active_path', ['t' => $t->id]) }}">Открыть</a></td>    
                         <td>{{$t->customers ? $t->customers->customer:'Данных нет' }}</td>
-                        <td>{{$t->transports ? $t->transports->model:'' }} | {{$t->transports ? $t->transports->govnumber:'Данных нет' }}</td>
+                        <td>{{$t->transports ? $t->transports->model:'' }} | {{$t->transports ? $t->transports->gov_number:'Данных нет' }}</td>
                         <td>{{$t->states ? $t->states->name_state:'Данных нет' }}</td> 
                         @auth        
                           <td align="right">

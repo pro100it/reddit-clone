@@ -14,7 +14,7 @@ class AddIndexColumnGovnumberTransportsTable extends Migration
     public function up()
     {
         Schema::table('transports', function (Blueprint $table) {
-           $table->unique('govnumber');
+           $table->unique('gov_number');
        });
     }
 
@@ -26,7 +26,7 @@ class AddIndexColumnGovnumberTransportsTable extends Migration
     public function down()
     {
        Schema::table('transports', function (Blueprint $table) {
-       $table->dropIndex(['govnumber']); 
+       $table->dropIndex(['gov_number']); 
     });
     }
 }

@@ -11,7 +11,7 @@
                 </div>
                 <div class="well">
                     <strong>Модель: </strong>{{ $transport->modeltransports ? $transport->modeltransports->model_name:'Данных нет'  }} <br>
-                    <strong>Государственный номер: </strong>{{ $transport->govnumber }}<br>
+                    <strong>Государственный номер: </strong>{{ $transport->gov_number }}<br>
                     <strong>Блок БСМТ: </strong>{{$transport->bsmts ? $transport->bsmts->modelnumber:'Данных нет' }}<br>
                     {{--  <strong>Заказчик: </strong>{{ $transport->customers ? $transport->customers->customer:'Данных нет' }}   --}}
                     <br><br><p><b>Добавлено {{ $transport->created_at->diffForHumans() }}</b></p>
